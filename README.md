@@ -1,0 +1,2 @@
+# frontend
+Frontend (`React) application.
