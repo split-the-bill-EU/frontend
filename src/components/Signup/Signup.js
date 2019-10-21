@@ -2,7 +2,7 @@ import React from 'react';
 import {Formik, Form, Field,} from 'formik';
 import * as yup from 'yup';
 import styled from 'styled-components';
-import AxiosAuth from '../../axios/AxiosAuth'
+import axios from 'axios';
 
 const OuterDiv = styled.div`
     display: flex;
@@ -67,35 +67,34 @@ const Button = styled.input`
 
 
 const validationSchema = yup.object().shape({
+    fname: yup.string()
+        .required('A name input is required'),
+    lname: yup.string()
+        .required('Last name is required'),
     email: yup.string()
         .email('email not valid')
-        .required('An email is required'),
+        .required('email is required'),
     password: yup.string()
         .required('a password is required'),
 });
 
-const loginURL = 'http://localhost:3000/api/auth/login';
+const SignUpURL = 'http://localhost:3000/api/auth/login';
 
-const Login = (props) => {
+const Signup = (props) => {
 
 
-    const onLogin = (formValues, actions) => {
-        const details = {
+    const submit = (formValues, actions) => {
+        const newUser = {
+            firstName: formValues.fname,
+            lastName: formValues.lname,
             email: formValues.email,
             password: formValues.password
         }
 
-
-        AxiosAuth()
-        .post(loginURL, details)
-        .then(res => {localStorage.setItem('token', res.data.token);
+    axios.post(SignUpURL, newUser)
+        .then(res => console.log(res))
         actions.resetForm();
-        // props.history.push('/dashboard')
-    })
-    .catch(error => {
-        localStorage.clear();
-        alert(error.message);
-    });
+        // props.history.push('/login')
 };
 
 var styles2 = {
@@ -110,19 +109,25 @@ var styles2 = {
 
     return (
     <Formik
-        initialValues={{ email: '', password: '' }}
-        onSubmit={onLogin}
+        initialValues={{ fname: '', lname: '', email: '', password: ''}}
+        onSubmit={submit}
         validationSchema={validationSchema}
         render={(props) => (
         <OuterDiv>
         <InnerDiv>
         <FontDiv>
-        <Styledfont>Please log in!</Styledfont>
+        <Styledfont>Sign Up</Styledfont>
         </FontDiv>
         <Surround>
         <Form className='login'>
-        
 
+            <StyledInnerDiv>
+            <Field style={styles2} name='fname' type="text" placeholder='First Name' />
+            </StyledInnerDiv>
+
+            <StyledInnerDiv>
+            <Field style={styles2} name='lname' type="text" placeholder='Last Name' />
+            </StyledInnerDiv>
             
             <StyledInnerDiv>
             <Field style={styles2} name='email' type="text" placeholder='Email' />
@@ -146,4 +151,4 @@ var styles2 = {
     );
 }
 
-export default Login;
+export default Signup;
