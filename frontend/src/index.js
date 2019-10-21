@@ -4,16 +4,16 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
-import {combineReducers, createStore, compose, applyMiddleware} from 'redux';
-import * as reducers from './state/reducers';
+import {createStore, compose, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
+import rootReducer from './state/reducers/index';
 
-const monsterReducer = combineReducers({
-    test: reducers.countReducer,
-});
+// const monsterReducer = combineReducers({
+//     test: reducers.countReducer,
+// });
 
 const store = createStore(
-    monsterReducer,
+    rootReducer,
     {},
     compose(
       applyMiddleware(thunk),
