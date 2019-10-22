@@ -9,10 +9,6 @@ import {createStore, compose, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './state/reducers/index';
 
-// const monsterReducer = combineReducers({
-//     test: reducers.countReducer,
-// });
-
 const store = createStore(
     rootReducer,
     {},
