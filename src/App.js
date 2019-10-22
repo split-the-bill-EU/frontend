@@ -9,7 +9,7 @@ import AllBills from './components/AllBills';
 function App() {
   return (
     <div className="App">
-      <Route exact path="/login" component={Login} />
+      <Route exact path="/" component={Login} />
       {/* Dashboard */}
       <Route path='/dashboard' render={props => withAuthCheck(Dashbaord, props)} />
       {/* All Bills */}

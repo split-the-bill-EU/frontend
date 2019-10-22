@@ -11,7 +11,8 @@ const OuterDiv = styled.div`
     height: 100vh;
     box-sizing: border-box;
     justify-content: center;
-    align-content: center;`
+    align-content: center;
+`
 
 const InnerDiv = styled.div`
     display: flex;
@@ -24,7 +25,8 @@ const InnerDiv = styled.div`
     height: 70%;
     align-self: center;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;`
+    transition: 0.3s;
+`
 
 const StyledInnerDiv = styled.div`
     padding: 1em;
@@ -32,23 +34,27 @@ const StyledInnerDiv = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
-    flex-direction: column;`
+    flex-direction: column;
+`
 
 const Styledfont = styled.h3`
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 2.0em;
-    margin: 0.2em;`
+    margin: 0.2em;
+`
 
 const Surround = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 50%;`
+    height: 50%;
+`
 
 const FontDiv = styled.div`
     display: flex;
     height: 10%;
-    justify-content: center;`
+    justify-content: center;
+`
 
 const Button = styled.button`
     color: white;
@@ -61,7 +67,8 @@ const Button = styled.button`
     padding: 0.5em;
     text-decoration: none;
     border: 0;
-    cursor: pointer;`
+    cursor: pointer;
+`
 
 
 
@@ -78,9 +85,9 @@ const loginURL = 'https://split-the-bill-api.herokuapp.com/api/auth/login';
 
 const Login = (props) => {
 
-
+    
     const onLogin = (formValues, actions) => {
-        debugger
+        console.log(formValues);
         const details = {
             email: formValues.email,
             password: formValues.password
@@ -91,25 +98,24 @@ const Login = (props) => {
         axios.post(loginURL, details)
         .then(res => {
         localStorage.setItem('token', res.data.token);
-            actions.resetForm();
-            debugger
+        actions.resetForm();
         props.history.push('/dashboard')
-    })
-    .catch(error => {
-        localStorage.clear();
-        alert(error.message);
-    });
-};
+        })
+        .catch(error => {
+            localStorage.clear();
+            alert(error.message);
+        });
+    };
 
-const styles2 = {
-    margin: '0.5em',
-    width: '20em',
-    height: '1.8em',
-    borderRadius: '0.2em',
-    fontSize: '1em',
-    textAlign: 'center',
-    border: '0',
-  };
+    const styles2 = {
+        margin: '0.5em',
+        width: '20em',
+        height: '1.8em',
+        borderRadius: '0.2em',
+        fontSize: '1em',
+        textAlign: 'center',
+        border: '0',
+    };
 
     return (
     <Formik

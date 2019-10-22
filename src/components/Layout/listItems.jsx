@@ -23,7 +23,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="All Bills" />
     </ListItem>
-    <ListItem button component={NavLink} to="/login" onClick={logout}>
+    <ListItem button component={NavLink} to="/" onClick={logout}>
       <ListItemIcon>
         <ExitToAppIcon />
       </ListItemIcon>
