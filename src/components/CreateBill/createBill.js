@@ -66,22 +66,17 @@ const Button = styled.button`
 
 
 
-const validationSchema = yup.object().shape({
-    title: yup.string()
-        .required('A title is required'),
-    amount: yup.number()
-        .required('an amount is required'),
-});
 
-const createBillURL = 'http://localhost:3000/api/auth/login';
+
+const createBillURL = 'https://split-the-bill-api.herokuapp.com/api/bills';
 
 const CreateBill = (props) => {
 
 
     const createBill = (formValues, actions) => {
         const details = {
-            email: formValues.title,
-            password: formValues.amount
+            amount: formValues.amount,
+            title: formValues.title
         }
 
 
@@ -93,6 +88,7 @@ const CreateBill = (props) => {
         // props.history.push('/dashboard')
     })
     .catch(error => {
+        console.log(error.response.data.message)
         localStorage.clear();
         alert(error.message);
     });
@@ -108,9 +104,21 @@ var styles2 = {
     border: '0',
   };
 
+  const validationSchema = yup.object().shape({
+    title: yup.string()
+        .required('A title is required'),
+    amount: yup.string()
+        .required('an amount is required'),
+});
+
+    const initialValues = {
+        amount: '',
+        title: ''
+    }
+
     return (
     <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={initialValues}
         onSubmit={createBill}
         validationSchema={validationSchema}
         render={(props) => (
