@@ -2,7 +2,7 @@ import React from 'react';
 import {Formik, Form, Field,} from 'formik';
 import * as yup from 'yup';
 import styled from 'styled-components';
-import AxiosAuth from '../../axios/AxiosAuth'
+import axios from 'axios';
 
 const OuterDiv = styled.div`
     display: flex;
@@ -50,7 +50,7 @@ const FontDiv = styled.div`
     height: 10%;
     justify-content: center;`
 
-const Button = styled.input`
+const Button = styled.button`
     color: white;
     background-color: #75C22F;
     text-transform: uppercase;
@@ -74,7 +74,7 @@ const validationSchema = yup.object().shape({
         .required('a password is required'),
 });
 
-const loginURL = 'http://localhost:3000/api/auth/login';
+const loginURL = 'https://split-the-bill-api.herokuapp.com/api/auth/login';
 
 const Login = (props) => {
 
@@ -86,9 +86,10 @@ const Login = (props) => {
         }
 
 
-        AxiosAuth()
-        .post(loginURL, details)
-        .then(res => {localStorage.setItem('token', res.data.token);
+        
+        axios.post(loginURL, details)
+        .then(res => {
+        localStorage.setItem('token', res.data.token);
         actions.resetForm();
         // props.history.push('/dashboard')
     })
