@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Checkbox, Card } from "@material-ui/core";
+import styled from "styled-components";
 
 export default (props) => {
     const {user, setOwingUsers, owingUsers} = props;
@@ -29,9 +30,15 @@ export default (props) => {
    }
 
     return(
-        <Card>
+        <StyledCard>
             <h4>{`${user.firstName} ${user.lastName}`}</h4>
             <Checkbox onChange = {onCheckBoxChanged} />
-        </Card>
+        </StyledCard>
     )
 }
+
+const StyledCard = styled(Card)`
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: .4rem;
+`
