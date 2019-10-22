@@ -133,7 +133,7 @@ var styles2 = {
             </StyledInnerDiv>
 
             <StyledInnerDiv>
-            <Button type='submit' />
+            <Button type='submit'>Sign In</Button>
             </StyledInnerDiv>
             
         </Form>

@@ -2,7 +2,7 @@ import React from 'react';
 import {Formik, Form, Field,} from 'formik';
 import * as yup from 'yup';
 import styled from 'styled-components';
-import axios from 'axios';
+import AxiosAuth from '../../axios/AxiosAuth';
 
 const OuterDiv = styled.div`
     display: flex;
@@ -67,34 +67,35 @@ const Button = styled.button`
 
 
 const validationSchema = yup.object().shape({
-    fname: yup.string()
-        .required('A name input is required'),
-    lname: yup.string()
-        .required('Last name is required'),
-    email: yup.string()
-        .email('email not valid')
-        .required('email is required'),
-    password: yup.string()
-        .required('a password is required'),
+    title: yup.string()
+        .required('A title is required'),
+    amount: yup.number()
+        .required('an amount is required'),
 });
 
-const SignUpURL = 'http://localhost:3000/api/auth/login';
+const createBillURL = 'http://localhost:3000/api/auth/login';
 
-const Signup = (props) => {
+const CreateBill = (props) => {
 
 
-    const submit = (formValues, actions) => {
-        const newUser = {
-            firstName: formValues.fname,
-            lastName: formValues.lname,
-            email: formValues.email,
-            password: formValues.password
+    const createBill = (formValues, actions) => {
+        const details = {
+            email: formValues.title,
+            password: formValues.amount
         }
 
-    axios.post(SignUpURL, newUser)
-        .then(res => console.log(res))
+
+        AxiosAuth()
+        .post(createBillURL, details)
+        .then(res => {
+        console.log(res.data);
         actions.resetForm();
-        // props.history.push('/login')
+        // props.history.push('/dashboard')
+    })
+    .catch(error => {
+        localStorage.clear();
+        alert(error.message);
+    });
 };
 
 var styles2 = {
@@ -109,36 +110,30 @@ var styles2 = {
 
     return (
     <Formik
-        initialValues={{ fname: '', lname: '', email: '', password: ''}}
-        onSubmit={submit}
+        initialValues={{ email: '', password: '' }}
+        onSubmit={createBill}
         validationSchema={validationSchema}
         render={(props) => (
         <OuterDiv>
         <InnerDiv>
         <FontDiv>
-        <Styledfont>Sign Up</Styledfont>
+        <Styledfont>Create a bill</Styledfont>
         </FontDiv>
         <Surround>
         <Form className='login'>
+        
 
-            <StyledInnerDiv>
-            <Field style={styles2} name='fname' type="text" placeholder='First Name' />
-            </StyledInnerDiv>
-
-            <StyledInnerDiv>
-            <Field style={styles2} name='lname' type="text" placeholder='Last Name' />
-            </StyledInnerDiv>
             
             <StyledInnerDiv>
-            <Field style={styles2} name='email' type="text" placeholder='Email' />
+            <Field style={styles2} name='title' type="text" placeholder='Title' />
             </StyledInnerDiv>
 
             <StyledInnerDiv>
-            <Field style={styles2} name='password' type="password" placeholder='Password' />
+            <Field style={styles2} name='amount' type="text" placeholder='Total Amount' />
             </StyledInnerDiv>
 
             <StyledInnerDiv>
-            <Button type='submit'>Sign Up</Button>
+            <Button type='submit'>Save</Button>
             </StyledInnerDiv>
             
         </Form>
@@ -151,4 +146,4 @@ var styles2 = {
     );
 }
 
-export default Signup;
+export default CreateBill;
