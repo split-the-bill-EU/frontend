@@ -1,5 +1,11 @@
 import React from 'react';
+import Layout from '../Layout'
+import Dashboard from './Dashboard'
 
 export default () => {
-    return <div>Dashboard</div>
+    return (
+        <Layout title='Dashboard'>
+            <Dashboard />
+        </Layout>
+    )
 }

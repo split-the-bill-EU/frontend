@@ -117,7 +117,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export function Layout(props) {
+export function Layout({ children, title }) {
+  // debugger
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -143,7 +144,7 @@ export function Layout(props) {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            {title}
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
@@ -174,9 +175,9 @@ export function Layout(props) {
           <Grid item xs={12} md={12} lg={12}>
             <Paper className={fixedHeightPaper}>
               {/* Dashboard */}
-              <Route exact path='/' render={props => withAuthCheck(Dashboard, props)} />
+              <Route path='/dashboard' render={props => withAuthCheck(Dashboard, props)} />
               {/* All Bills */}
-              <Route exact path='/allbills' render={props => withAuthCheck(AllBills, props)} />
+              <Route path='/allbills' render={props => withAuthCheck(AllBills, props)} />
             </Paper>
           </Grid>
         </Container>
