@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import AxiosAuth from '../axios/AxiosAuth';
 import UserComponent from './UsersComponent';
+import styled from "styled-components";
+
+import {  Card } from "@material-ui/core";
+
 
 const split = (id) => {
     AxiosAuth().post(`https://split-the-bill-api.herokuapp.com/api/bills/${id}/split`, {
@@ -28,10 +32,10 @@ export default function SplitBillsCard({ feature, setOwingUsers, owingUsers }) {
     const toggle = () => setSplitting(!isSplitting)
     return (
         <div>
-            <div>
+            <StyledCard>
                 <p>{feature.title}</p>
-                <p>{feature.amount}</p>
-                <p>{feature.status}</p>
+                <p style={{"color": "red"}}>Amount: {feature.amount}</p>
+                <p>status: {feature.status}</p>
                 <button onClick={ () => {
                     toggle()
                     setOwingUsers([])
@@ -42,7 +46,7 @@ export default function SplitBillsCard({ feature, setOwingUsers, owingUsers }) {
                     :
                     <></>
                 }
-            </div>
+            </StyledCard>
             <div>
                 {
                     isSplitting ?
@@ -54,3 +58,6 @@ export default function SplitBillsCard({ feature, setOwingUsers, owingUsers }) {
     );
 }
 
+const StyledCard = styled(Card)`
+    margin: .2rem;
+`
