@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Route, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
@@ -19,9 +19,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems } from './listItems';
-import withAuthCheck from '../../AuthCheck'
-import Dashboard from '../Dashboard';
-import AllBills from '../AllBills';
 
 function Copyright() {
   return (

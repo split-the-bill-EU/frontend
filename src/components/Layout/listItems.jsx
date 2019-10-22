@@ -6,8 +6,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PaymentIcon from '@material-ui/icons/Payment';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import logout from '../../Functions/logout';
 
 export const mainListItems = (
+  
   <div>
     <ListItem button component={NavLink} to="/dashboard">
       <ListItemIcon>
@@ -21,7 +23,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="All Bills" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component={NavLink} to="/login" onClick={logout}>
       <ListItemIcon>
         <ExitToAppIcon />
       </ListItemIcon>
