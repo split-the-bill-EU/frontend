@@ -1,5 +1,11 @@
 import React from 'react';
+import Layout from '../Layout';
+import AllBills from './AllBills';
 
 export default () => {
-    return <div>All bills</div>
+    return (
+        <Layout title='All Bills'>
+            {AllBills}
+        </Layout>
+    )
 }

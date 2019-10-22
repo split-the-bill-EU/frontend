@@ -174,10 +174,7 @@ export function Layout({ children, title }) {
         <Container maxWidth="lg" className={classes.container}>
           <Grid item xs={12} md={12} lg={12}>
             <Paper className={fixedHeightPaper}>
-              {/* Dashboard */}
-              <Route path='/dashboard' render={props => withAuthCheck(Dashboard, props)} />
-              {/* All Bills */}
-              <Route path='/allbills' render={props => withAuthCheck(AllBills, props)} />
+              {children}
             </Paper>
           </Grid>
         </Container>

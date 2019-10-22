@@ -9,8 +9,10 @@ function App() {
   return (
     <div className="App">
       {/* <Route path="/login" component={Login} />
-      <Route exact path="/" render={props => withAuthCheck(Layout, props)} /> */}
-      <Layout/>
+      {/* Dashboard */}
+      <Route path='/dashboard' render={props => withAuthCheck(Dashboard, props)} />
+              {/* All Bills */}
+              <Route path='/allbills' render={props => withAuthCheck(AllBills, props)} />
     </div>
   );
 }
