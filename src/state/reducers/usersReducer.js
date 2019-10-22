@@ -4,7 +4,12 @@ const initialUsers = [];
 const initialState = {
     users: [],
     currentUser: {
-        bills: []
+        "id": "",
+        "firstName": "",
+        "lastName": "",
+        "email": "",
+        "bills": [],
+        "splits": []
     }
 }
 
@@ -16,10 +21,10 @@ export default (state = initialState, action) => {
                 users: action.payload
             };
 
-        case actionTypes.ADD_BILLS:
+        case actionTypes.ADD_CURRENT_USER:
             return {
                 ...state,
-                bills: action.payload
+               currentUser: action.payload
             }
     
         default:
