@@ -1,5 +1,5 @@
 import React from 'react';
-import {Formik, Form, Field,} from 'formik';
+import {Formik, Form, Field} from 'formik';
 import * as yup from 'yup';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -99,7 +99,7 @@ const Login = (props) => {
     });
 };
 
-var styles2 = {
+const styles2 = {
     margin: '0.5em',
     width: '20em',
     height: '1.8em',

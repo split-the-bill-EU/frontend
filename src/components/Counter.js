@@ -17,11 +17,9 @@ export function Counter (props) {
     )
 }
 
-const mapStateToProps = state => {
-    return {
+const mapStateToProps = state => ({
         count: state.test,
-    }
-}
+})
 
 export default connect(mapStateToProps,
     creators,
