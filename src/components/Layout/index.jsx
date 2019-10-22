@@ -118,7 +118,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export function Layout(props) {
-  debugger
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -173,11 +172,11 @@ export function Layout(props) {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid item xs={12} md={12} lg={12}>
-          <Paper className={fixedHeightPaper}>
-            {/* Dashboard */}
-            <Route exact path='/' render={props => <Dashboard />} />
-            {/* All Bills */}
-            <Route exact path='/allbills' render={props => <AllBills />} />            
+            <Paper className={fixedHeightPaper}>
+              {/* Dashboard */}
+              <Route exact path='/' render={props => withAuthCheck(Dashboard, props)} />
+              {/* All Bills */}
+              <Route exact path='/allbills' render={props => withAuthCheck(AllBills, props)} />
             </Paper>
           </Grid>
         </Container>
