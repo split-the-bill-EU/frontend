@@ -80,6 +80,7 @@ const Login = (props) => {
 
 
     const onLogin = (formValues, actions) => {
+        debugger
         const details = {
             email: formValues.email,
             password: formValues.password
@@ -90,8 +91,9 @@ const Login = (props) => {
         axios.post(loginURL, details)
         .then(res => {
         localStorage.setItem('token', res.data.token);
-        actions.resetForm();
-        // props.history.push('/dashboard')
+            actions.resetForm();
+            debugger
+        props.history.push('/dashboard')
     })
     .catch(error => {
         localStorage.clear();

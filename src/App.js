@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
-import Login from './components/Login';
+import Login from './components/Login/Login';
 import withAuthCheck from './AuthCheck';
 import Dashbaord from './components/Dashboard';
 import AllBills from './components/AllBills';
