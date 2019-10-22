@@ -16,16 +16,14 @@ export function reset(){
 }
 
 export const getSplits = () => dispatch => {
-    debugger
     AxiosAuth().get(splitsApi)
         .then(res => {
-            debugger
             const splitsAray = res.data.user.splits;
             console.log(splitsAray);
             dispatch({type: types.ADD_SPLITS, payload: splitsAray});
         })
         .catch(error => {
-            debugger
+            console.log(error.message);
         })
 }
 

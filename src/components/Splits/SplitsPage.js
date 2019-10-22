@@ -17,10 +17,12 @@ export function SplitsPage (props) {
 
         AxiosAuth().patch(`${patchURL}/${splitToSettle}/settleUp?au&=`, payload)
             .then(res => {
-                debugger
+                console.log(res.data.message)
+                setEditing(false);
+                getSplits();
             })
             .catch(err => {
-                debugger
+                console.log(err.message)
             })
     }
 
@@ -31,7 +33,7 @@ export function SplitsPage (props) {
 
     useEffect(() => {
         getSplits();
-    }, []);
+    }, [getSplits]);
 
     const styles2 = {
         margin: '5px',
@@ -45,7 +47,7 @@ export function SplitsPage (props) {
             <ul>
                 {
                     splits.map(split => (
-                        <Splits split={split} settleUp={settleUp}/>
+                        <Splits key={split.id} split={split} settleUp={settleUp}/>
                     ))
                 }
             </ul>
