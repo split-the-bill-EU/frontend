@@ -64,21 +64,7 @@ const Button = styled.button`
     cursor: pointer;`
 
 
-
-
-const validationSchema = yup.object().shape({
-    fname: yup.string()
-        .required('A name input is required'),
-    lname: yup.string()
-        .required('Last name is required'),
-    email: yup.string()
-        .email('email not valid')
-        .required('email is required'),
-    password: yup.string()
-        .required('a password is required'),
-});
-
-const SignUpURL = 'http://localhost:3000/api/auth/login';
+const SignUpURL = 'https://split-the-bill-api.herokuapp.com/api/auth/register';
 
 const Signup = (props) => {
 
@@ -92,10 +78,17 @@ const Signup = (props) => {
         }
 
     axios.post(SignUpURL, newUser)
-        .then(res => console.log(res))
-        actions.resetForm();
-        // props.history.push('/login')
-};
+        .then(res => {
+            console.log(res.data.message);
+            actions.resetForm();
+            // props.history.push('/login')
+        })
+        .catch(error => {
+            debugger
+            localStorage.clear();
+            alert(error.message);
+        });
+    }
 
 var styles2 = {
     margin: '0.5em',
@@ -107,9 +100,29 @@ var styles2 = {
     border: '0',
   };
 
+  const validationSchema = yup.object().shape({
+    fname: yup.string()
+        .required('A name input is required'),
+    lname: yup.string()
+        .required('Last name is required'),
+    email: yup.string()
+        .email('email not valid')
+        .required('email is required'),
+    password: yup.string()
+        .min(6, 'password must be six characters or longer')
+        .required('a password is required'),
+});
+
+    const initialValueForm = {
+        fname: '',
+        lname: '',
+        email: '',
+        password: ''
+    }
+
     return (
     <Formik
-        initialValues={{ fname: '', lname: '', email: '', password: ''}}
+        initialValues={initialValueForm}
         onSubmit={submit}
         validationSchema={validationSchema}
         render={(props) => (
@@ -119,7 +132,7 @@ var styles2 = {
         <Styledfont>Sign Up</Styledfont>
         </FontDiv>
         <Surround>
-        <Form className='login'>
+        <Form className='signup'>
 
             <StyledInnerDiv>
             <Field style={styles2} name='fname' type="text" placeholder='First Name' />

@@ -120,7 +120,7 @@ var styles2 = {
         <Styledfont>Create a bill</Styledfont>
         </FontDiv>
         <Surround>
-        <Form className='login'>
+        <Form className='createbill'>
         
 
             

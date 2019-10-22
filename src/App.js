@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import Counter from './components/Counter';
-import CreateBill from './components/CreateBill/createBill';
+import Signup from './components/Signup/Signup';
 
 function App() {
   return (
     <div className="App">
       <Counter/>
-      <CreateBill/>
+      <Signup/>
     </div>
   );
 }
