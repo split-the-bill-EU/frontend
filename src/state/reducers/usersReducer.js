@@ -4,8 +4,8 @@ const initialUsers = [];
 
 export default (state = initialUsers, action) => {
     switch (action.type) {
-        case actionTypes.DECREMENT:
-            return state;
+        case actionTypes.ADD_USERS:
+            return action.payload;
     
         default:
             return state;
