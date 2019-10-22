@@ -18,11 +18,25 @@ export const addUsers = (users) => ({
     payload: users,
 })
 
+export const addBills = (bills) => ({
+    type: types.ADD_BILLS,
+    payload: bills,
+})
+
 export const getUsers = () => dispatch => {
     AxiosAuth().get('https://split-the-bill-api.herokuapp.com/api/users')
     .then(res => {
         console.log(res.data)
         dispatch(addUsers(res.data.users))
+    })
+    .catch(err => alert(err))
+}
+
+export const getUserDetails = () => dispatch => {
+    AxiosAuth().get('https://split-the-bill-api.herokuapp.com/api/users/profile')
+    .then(res => {
+        console.log(res.data);
+        dispatch(addBills(res.data.bills))        
     })
     .catch(err => alert(err))
 }
