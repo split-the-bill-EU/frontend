@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -134,10 +134,12 @@ const Login = (props) => {
 
                                 <StyledInnerDiv>
                                     <Field style={styles2} name='email' type="text" placeholder='Email' />
+                                    <ErrorMessage name='email' component='div'/>
                                 </StyledInnerDiv>
 
                                 <StyledInnerDiv>
                                     <Field style={styles2} name='password' type="password" placeholder='Password' />
+                                    <ErrorMessage name='password' component='div'/>
                                 </StyledInnerDiv>
 
                                 <StyledInnerDiv>
