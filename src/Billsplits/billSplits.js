@@ -73,7 +73,7 @@ export function BillSplits (props) {
         <div>
             {
             currentBillSplits.map(billSplit => 
-            <Split split={billSplit} approve={approve}/>)
+            <Split key={billSplit.id} split={billSplit} approve={approve}/>)
             }
         </div>
     );
