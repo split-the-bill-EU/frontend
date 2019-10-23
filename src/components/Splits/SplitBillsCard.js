@@ -40,6 +40,12 @@ export default function SplitBillsCard({ feature, setOwingUsers, owingUsers }) {
                     toggle()
                     setOwingUsers([])
                 } }>{isSplitting ? 'Cancel' : 'Split'}</button>
+                {
+                !isSplitting ?
+                <button onClick={() => {}}>Show Splits</button>
+                :
+                <></>
+                }
                 { 
                     isSplitting ? 
                     <button onClick={() => split(feature.id)}>Done</button>

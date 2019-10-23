@@ -55,15 +55,13 @@ export const getSplits = () => dispatch => {
         })
 }
 
+export const getBillSplits = () => dispatch => {
+    AxiosAuth().get('https://split-the-bill-api.herokuapp.com/api/users/profile')
+    .then(res => {
+        console.log(res.data);
+        dispatch({type: types.ADD_BILLSPLITS, payload: res.data.user.bills.splits});
+    })
+    .catch(err => console.log(err))
+}
 
-// export const getSplits = () => dispatch => {
-//     const splitsPromise = AxiosAuth(splitsApi);
 
-//     Promise.all([splitsPromise])
-//         .then(([splitsApiResponse]) => {
-//             debugger
-//             const splits = splitsApiResponse.data.user.splits;
-
-//             dispatch({type: types.ADD_SPLITS, payload: splits});
-//         });
-// }
