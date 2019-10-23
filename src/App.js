@@ -5,7 +5,7 @@ import SplitBills from './components/Splits/SplitBills';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import withAuthCheck from './AuthCheck';
-import Dashbaord from './components/Dashboard';
+import Dashboard from './components/Dashboard';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <Route exact path="/" component={Login} />
       <Route path="/signup" component={Signup} />
       {/* Dashboard */}
-      <Route path='/dashboard' render={props => withAuthCheck(Dashbaord, props)} />
+      <Route path='/dashboard' render={props => withAuthCheck(Dashboard, props)} />
       <Route path='/my_bills' render={props => withAuthCheck(SplitBills, props)} />
     </div>
   );
