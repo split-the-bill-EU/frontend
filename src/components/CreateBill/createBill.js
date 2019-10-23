@@ -83,13 +83,10 @@ const CreateBill = (props) => {
         AxiosAuth()
             .post(createBillURL, details)
             .then(res => {
-                console.log(res.data);
                 actions.resetForm();
                 alert(res.statusText);
-                // props.history.push('/dashboard')
             })
             .catch(error => {
-                console.log(error.response.data.message)
                 localStorage.clear();
                 alert(error.message);
             });
