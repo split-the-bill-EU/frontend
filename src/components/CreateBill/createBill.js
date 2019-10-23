@@ -1,5 +1,5 @@
 import React from 'react';
-import {Formik, Form, Field} from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import styled from 'styled-components';
 import AxiosAuth from '../../axios/AxiosAuth';
@@ -81,35 +81,36 @@ const CreateBill = (props) => {
 
 
         AxiosAuth()
-        .post(createBillURL, details)
-        .then(res => {
-        console.log(res.data);
-        actions.resetForm();
-        // props.history.push('/dashboard')
-    })
-    .catch(error => {
-        console.log(error.response.data.message)
-        localStorage.clear();
-        alert(error.message);
+            .post(createBillURL, details)
+            .then(res => {
+                console.log(res.data);
+                actions.resetForm();
+                alert(res.statusText);
+                // props.history.push('/dashboard')
+            })
+            .catch(error => {
+                console.log(error.response.data.message)
+                localStorage.clear();
+                alert(error.message);
+            });
+    };
+
+    const styles2 = {
+        margin: '0.5em',
+        width: '20em',
+        height: '1.8em',
+        borderRadius: '0.2em',
+        fontSize: '1em',
+        textAlign: 'center',
+        border: '0',
+    };
+
+    const validationSchema = yup.object().shape({
+        title: yup.string()
+            .required('A title is required'),
+        amount: yup.string()
+            .required('an amount is required'),
     });
-};
-
-const styles2 = {
-    margin: '0.5em',
-    width: '20em',
-    height: '1.8em',
-    borderRadius: '0.2em',
-    fontSize: '1em',
-    textAlign: 'center',
-    border: '0',
-  };
-
-  const validationSchema = yup.object().shape({
-    title: yup.string()
-        .required('A title is required'),
-    amount: yup.string()
-        .required('an amount is required'),
-});
 
     const initialValues = {
         amount: '',
@@ -117,40 +118,42 @@ const styles2 = {
     }
 
     return (
-    <Formik
-        initialValues={initialValues}
-        onSubmit={createBill}
-        validationSchema={validationSchema}
-        render={(props) => (
-        <OuterDiv>
-        <InnerDiv>
-        <FontDiv>
-        <Styledfont>Create a bill</Styledfont>
-        </FontDiv>
-        <Surround>
-        <Form className='createbill'>
-        
+        <Formik
+            initialValues={initialValues}
+            onSubmit={createBill}
+            validationSchema={validationSchema}
+            render={(props) => (
+                <OuterDiv>
+                    <InnerDiv>
+                        <FontDiv>
+                            <Styledfont>Create a bill</Styledfont>
+                        </FontDiv>
+                        <Surround>
+                            <Form className='createbill'>
 
-            
-            <StyledInnerDiv>
-            <Field style={styles2} name='title' type="text" placeholder='Title' />
-            </StyledInnerDiv>
 
-            <StyledInnerDiv>
-            <Field style={styles2} name='amount' type="text" placeholder='Total Amount' />
-            </StyledInnerDiv>
 
-            <StyledInnerDiv>
-            <Button type='submit'>Save</Button>
-            </StyledInnerDiv>
-            
-        </Form>
-        </Surround>
-    
-        </InnerDiv>
-        </OuterDiv>
-        )}
-    />
+                                <StyledInnerDiv>
+                                    <Field style={styles2} name='title' type="text" placeholder='Title' />
+                                    <ErrorMessage name='title' component='div' />
+                                </StyledInnerDiv>
+
+                                <StyledInnerDiv>
+                                    <Field style={styles2} name='amount' type="text" placeholder='Total Amount' />
+                                    <ErrorMessage name='amount' component='div' />
+                                </StyledInnerDiv>
+
+                                <StyledInnerDiv>
+                                    <Button type='submit'>Save</Button>
+                                </StyledInnerDiv>
+
+                            </Form>
+                        </Surround>
+
+                    </InnerDiv>
+                </OuterDiv>
+            )}
+        />
     );
 }
 
