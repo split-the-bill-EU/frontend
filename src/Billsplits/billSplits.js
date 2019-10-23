@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../state/actionCreators';
 import AxiosAuth from '../axios/AxiosAuth';
+import swal from '@sweetalert/with-react';
 
 
 
@@ -15,11 +16,18 @@ export function BillSplits (props) {
 
         AxiosAuth().patch(`${approveURL}/${id}/approve`)
             .then(res => {
-                debugger
-                console.log(res.data)
+                console.log(res.data);
+                if (res.data) {
+                    swal({
+                    title: 'Good!',
+                    icon: 'success',
+                    text: 'Bill splitted successfully',
+                    button: 'OK',                 
+                    });
+                }
+                props.history.push('/dashboard')
             })
             .catch(err => {
-                debugger
                 console.log(err.message)
             })
     }
@@ -55,8 +63,8 @@ function Split(props){
 
     return (
         <div>
-            <div>{split.status}</div>
-            <div>{split.amount}</div>
+            <div style={{ color: 'red' }}>Status: {split.status}</div>
+            <div>Amount: {split.amount}</div>
             <button onClick={() => approve(split.id)}>Confirm</button>
         </div>
     )
