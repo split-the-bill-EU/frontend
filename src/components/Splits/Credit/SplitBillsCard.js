@@ -1,28 +1,9 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD:src/components/Splits/Credit/SplitBillsCard.js
-import AxiosAuth from '../../../axios/AxiosAuth';
-import UserComponent from '../../UserComponent';
-import styled from "styled-components";
-
-import {  Card } from "@material-ui/core";
-
-
-const split = (id) => {
-    AxiosAuth().post(`https://split-the-bill-api.herokuapp.com/api/bills/${id}/split`, {
-        // splitters: 
-    })
-        .then(res => {
-            console.log('split', res.data);
-
-        })
-}
-=======
 import AxiosAuth from '../../axios/AxiosAuth';
 import UserComponent from '../UsersComponent';
 import styled from 'styled-components';
 import swal from '@sweetalert/with-react';
 import { Card } from '@material-ui/core';
->>>>>>> develop:src/components/Splits/SplitBillsCard.js
 
 export default function SplitBillsCard({ feature, setOwingUsers, owingUsers }) {
   const [isSplitting, setSplitting] = useState(false);
