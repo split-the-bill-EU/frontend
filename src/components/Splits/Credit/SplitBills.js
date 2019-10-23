@@ -13,17 +13,19 @@ export const SplitBills = props => {
     getUserDetails();
     getUsers();
   }, []);
-  return (    
-    <StyledDiv>
-      {lumpState.currentUser.bills.map(bill => (
-        <SplitBillsCard
-          key={bill.id}
-          setOwingUsers={setOwingUsers}
-          feature={bill}
-          owingUsers={owingUsers}
-        />
-      ))}
-    </StyledDiv>    
+  return (
+    
+      <StyledDiv>
+        {lumpState.currentUser.bills.map(bill => (
+          <SplitBillsCard
+            key={bill.id}
+            setOwingUsers={setOwingUsers}
+            bill={bill}
+            owingUsers={owingUsers}
+          />
+        ))}
+      </StyledDiv>
+    
   );
 };
 
