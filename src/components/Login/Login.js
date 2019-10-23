@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -65,6 +66,7 @@ const Button = styled.button`
     font-family: system-ui, sans-serif;
     border-radius: 0.3em;
     padding: 0.5em;
+    margin: 1rem;
     text-decoration: none;
     border: 0;
     cursor: pointer;
@@ -143,7 +145,12 @@ const Login = (props) => {
                                 </StyledInnerDiv>
 
                                 <StyledInnerDiv>
-                                    <Button type='submit'>Sign In</Button>
+                                    <section>
+                                        <Button type='submit'>Sign In</Button>
+                                        <Link to='/signup'>                                            
+                                            <Button type='button'>Sign Up</Button>
+                                        </Link>
+                                    </section>                                    
                                 </StyledInnerDiv>
 
                             </Form>
