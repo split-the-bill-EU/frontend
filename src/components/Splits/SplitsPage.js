@@ -132,7 +132,11 @@ function Splits(props) {
     )
 }
 
+const mapStateToProps = state => ({
+    splits: state.splits,
+})
+
 export default connect(
-    state => state,
+    mapStateToProps,
     creators,
 )(SplitsPage);

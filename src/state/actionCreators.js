@@ -26,15 +26,3 @@ export const getSplits = () => dispatch => {
             console.log(error.message);
         })
 }
-
-// export const getSplits = () => dispatch => {
-//     const splitsPromise = AxiosAuth(splitsApi);
-
-//     Promise.all([splitsPromise])
-//         .then(([splitsApiResponse]) => {
-//             debugger
-//             const splits = splitsApiResponse.data.user.splits;
-
-//             dispatch({type: types.ADD_SPLITS, payload: splits});
-//         });
-// }
