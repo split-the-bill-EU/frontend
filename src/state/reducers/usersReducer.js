@@ -27,15 +27,12 @@ export default (state = initialState, action) => {
                currentUser: action.payload
             }
 
-        case actionTypes.ADD_BILLSPLITS:
+        case actionTypes.ADD_BILLS:
             return {
                 ...state,
                 currentUser: {
                     ...state.currentUser,
-                    bills: {
-                        ...state.currentUser.bills,
-                        splits: action.payload
-                    }
+                    bills: action.payload
                 }
             }
     
