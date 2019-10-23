@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import swal from '@sweetalert/with-react';
 import { Card } from '@material-ui/core';
 
-export default function SplitBillsCard({ feature, setOwingUsers, owingUsers }) {
+export default function SplitBillsCard({ bill, setOwingUsers, owingUsers }) {
   const [isSplitting, setSplitting] = useState(false);
 
   const split = id => {
@@ -29,19 +29,23 @@ export default function SplitBillsCard({ feature, setOwingUsers, owingUsers }) {
   return (
     <div>
       <StyledCard>
-        <p>{feature.title}</p>
-        <p style={{ color: 'red' }}>Amount: {feature.amount}</p>
-        <p>status: {feature.status}</p>
-        <button
-          onClick={() => {
-            toggle();
-            setOwingUsers([]);
-          }}
-        >
-          {isSplitting ? 'Cancel' : 'Split'}
-        </button>
+        <p>{bill.title}</p>
+        <p style={{ color: 'red' }}>Amount: {bill.amount}</p>
+        <p>status: {bill.status}</p>
+        {bill.splits.length ? (
+          <button>View Splits</button>
+        ) : (
+          <button
+            onClick={() => {
+              toggle();
+              setOwingUsers([]);
+            }}
+          >
+            {isSplitting ? 'Cancel' : 'Split'}
+          </button>
+        )}
         {isSplitting ? (
-          <button onClick={() => split(feature.id)}>Done</button>
+          <button onClick={() => split(bill.id)}>Done</button>
         ) : (
           <></>
         )}
