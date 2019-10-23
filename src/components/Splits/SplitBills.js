@@ -20,7 +20,7 @@ export const SplitBills = props => {
           <SplitBillsCard
             key={bill.id}
             setOwingUsers={setOwingUsers}
-            feature={bill}
+            bill={bill}
             owingUsers={owingUsers}
           />
         ))}
