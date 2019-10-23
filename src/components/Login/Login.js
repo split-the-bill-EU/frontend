@@ -102,7 +102,7 @@ const Login = (props) => {
             })
             .catch(error => {
                 localStorage.clear();
-                alert(error.message);
+                alert(error.response.data.message);
             });
     };
 
