@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actionCreators from '../state/actionCreators';
+import * as actionCreators from '../../state/actionCreators';
 import UserCard from './UserCard';
 
 export function UserComponent (props) {
