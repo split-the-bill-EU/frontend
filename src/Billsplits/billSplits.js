@@ -43,7 +43,7 @@ export function BillSplits (props) {
                     swal({
                     title: 'Good!',
                     icon: 'success',
-                    text: 'Bill splitted successfully',
+                    text: 'Bill confirmed successfully',
                     button: 'OK',                 
                     });
                 }
