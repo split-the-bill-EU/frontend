@@ -1,5 +1,6 @@
 import React from 'react';
-import {Formik, Form, Field} from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -11,7 +12,8 @@ const OuterDiv = styled.div`
     height: 100vh;
     box-sizing: border-box;
     justify-content: center;
-    align-content: center;`
+    align-content: center;
+`
 
 const InnerDiv = styled.div`
     display: flex;
@@ -24,7 +26,8 @@ const InnerDiv = styled.div`
     height: 70%;
     align-self: center;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;`
+    transition: 0.3s;
+`
 
 const StyledInnerDiv = styled.div`
     padding: 1em;
@@ -32,23 +35,27 @@ const StyledInnerDiv = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
-    flex-direction: column;`
+    flex-direction: column;
+`
 
 const Styledfont = styled.h3`
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 2.0em;
-    margin: 0.2em;`
+    margin: 0.2em;
+`
 
 const Surround = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 50%;`
+    height: 50%;
+`
 
 const FontDiv = styled.div`
     display: flex;
     height: 10%;
-    justify-content: center;`
+    justify-content: center;
+`
 
 const Button = styled.button`
     color: white;
@@ -59,9 +66,11 @@ const Button = styled.button`
     font-family: system-ui, sans-serif;
     border-radius: 0.3em;
     padding: 0.5em;
+    margin: 1rem;
     text-decoration: none;
     border: 0;
-    cursor: pointer;`
+    cursor: pointer;
+`
 
 
 
@@ -86,64 +95,68 @@ const Login = (props) => {
         }
 
 
-        
-        axios.post(loginURL, details)
-        .then(res => {
-        localStorage.setItem('token', res.data.token);
-        actions.resetForm();
-        // props.history.push('/dashboard')
-    })
-    .catch(error => {
-        localStorage.clear();
-        alert(error.message);
-    });
-};
 
-const styles2 = {
-    margin: '0.5em',
-    width: '20em',
-    height: '1.8em',
-    borderRadius: '0.2em',
-    fontSize: '1em',
-    textAlign: 'center',
-    border: '0',
-  };
+        axios.post(loginURL, details)
+            .then(res => {
+                localStorage.setItem('token', res.data.token);
+                actions.resetForm();
+                props.history.push('/dashboard')
+            })
+            .catch(error => {
+                localStorage.clear();
+                alert(error.response.data.message);
+            });
+    };
+
+    const styles2 = {
+        margin: '0.5em',
+        width: '20em',
+        height: '1.8em',
+        borderRadius: '0.2em',
+        fontSize: '1em',
+        textAlign: 'center',
+        border: '0',
+    };
 
     return (
-    <Formik
-        initialValues={{ email: '', password: '' }}
-        onSubmit={onLogin}
-        validationSchema={validationSchema}
-        render={(props) => (
-        <OuterDiv>
-        <InnerDiv>
-        <FontDiv>
-        <Styledfont>Please log in!</Styledfont>
-        </FontDiv>
-        <Surround>
-        <Form className='login'>
-        
+        <Formik
+            initialValues={{ email: '', password: '' }}
+            onSubmit={onLogin}
+            validationSchema={validationSchema}
+            render={(props) => (
+                <OuterDiv>
+                    <InnerDiv>
+                        <FontDiv>
+                            <Styledfont>Please log in!</Styledfont>
+                        </FontDiv>
+                        <Surround>
+                            <Form className='login'>
 
-            
-            <StyledInnerDiv>
-            <Field style={styles2} name='email' type="text" placeholder='Email' />
-            </StyledInnerDiv>
+                                <StyledInnerDiv>
+                                    <Field style={styles2} name='email' type="text" placeholder='Email' />
+                                    <ErrorMessage name='email' component='div'/>
+                                </StyledInnerDiv>
 
-            <StyledInnerDiv>
-            <Field style={styles2} name='password' type="password" placeholder='Password' />
-            </StyledInnerDiv>
+                                <StyledInnerDiv>
+                                    <Field style={styles2} name='password' type="password" placeholder='Password' />
+                                    <ErrorMessage name='password' component='div'/>
+                                </StyledInnerDiv>
 
-            <StyledInnerDiv>
-            <Button type='submit'>Sign In</Button>
-            </StyledInnerDiv>
-            
-        </Form>
-        </Surround>
-    
-        </InnerDiv>
-        </OuterDiv>
-        )}
-    />
+                                <StyledInnerDiv>
+                                    <section>
+                                        <Button type='submit'>Sign In</Button>
+                                        <Link to='/signup'>                                            
+                                            <Button type='button'>Sign Up</Button>
+                                        </Link>
+                                    </section>                                    
+                                </StyledInnerDiv>
+
+                            </Form>
+                        </Surround>
+                    </InnerDiv>
+                </OuterDiv>
+            )}
+        />
     );
 }
 

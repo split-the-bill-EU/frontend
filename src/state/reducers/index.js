@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
-import countReducer from './counterReducer';
+import usersReducer from "./usersReducer";
 import splitsReducer from './splitsReducer';
 
 const rootReducer = combineReducers({
-    test: countReducer,
     splits: splitsReducer,
+    lumpState: usersReducer
 });
 
 export default rootReducer;
