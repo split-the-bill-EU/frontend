@@ -17,12 +17,13 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
-    <ListItem button component={NavLink} to="/allbills">
+    <ListItem button component={NavLink} to="/my_bills">
       <ListItemIcon>
         <PaymentIcon />
       </ListItemIcon>
       <ListItemText primary="All Bills" />
     </ListItem>
+    
     <ListItem button component={NavLink} to="/" onClick={logout}>
       <ListItemIcon>
         <ExitToAppIcon />
