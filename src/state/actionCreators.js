@@ -55,6 +55,7 @@ export const getSplits = () => dispatch => {
         })
 }
 
+
 // export const getSplits = () => dispatch => {
 //     const splitsPromise = AxiosAuth(splitsApi);
 
