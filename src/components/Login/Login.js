@@ -132,8 +132,6 @@ const Login = (props) => {
                         <Surround>
                             <Form className='login'>
 
-
-
                                 <StyledInnerDiv>
                                     <Field style={styles2} name='email' type="text" placeholder='Email' />
                                     <ErrorMessage name='email' component='div'/>
@@ -155,7 +153,6 @@ const Login = (props) => {
 
                             </Form>
                         </Surround>
-
                     </InnerDiv>
                 </OuterDiv>
             )}
