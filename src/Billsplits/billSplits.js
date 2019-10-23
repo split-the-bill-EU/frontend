@@ -3,6 +3,28 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../state/actionCreators';
 import AxiosAuth from '../axios/AxiosAuth';
 import swal from '@sweetalert/with-react';
+import styled from 'styled-components';
+
+const Card = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: 1.5em;
+    background-color: #FFB884;
+    box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);`
+
+const Button = styled.button`
+    color: white;
+    background-color: #75C22F;
+    text-transform: uppercase;
+    margin: 1.5em;
+    text-align: center;
+    font-size: 1em;
+    font-family: system-ui, sans-serif;
+    border-radius: 0.3em;
+    padding: 0.5em;
+    text-decoration: none;
+    border: 0;`
 
 
 
@@ -62,11 +84,11 @@ function Split(props){
     const {split, approve} = props;
 
     return (
-        <div>
+        <Card>
             <div style={{ color: 'red' }}>Status: {split.status}</div>
             <div>Amount: {split.amount}</div>
-            <button onClick={() => approve(split.id)}>Confirm</button>
-        </div>
+            <Button onClick={() => approve(split.id)}>Confirm</Button>
+        </Card>
     )
 }
 
