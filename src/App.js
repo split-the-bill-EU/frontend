@@ -13,7 +13,6 @@ function App() {
     <div className="App">
       <Route exact path="/" component={Login} />
       <Route path="/signup" component={Signup} />
-      {/* Dashboard */}
       <Route path='/dashboard' render={props => withAuthCheck(Dashboard, props)} />
       <Route path='/my_bills' render={props => withAuthCheck(SplitBills, props)} />
       <Route path='/create_bill' render={props => withAuthCheck(CreateBill, props)} />
