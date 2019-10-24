@@ -27,7 +27,7 @@ export const Dashboard = props => {
       <Grid item xs={12} md={8} lg={4}>
         <Paper className={fixedHeightPaper} style={styles}>
           Total Balance
-          <div>{amountOwed ? total : -owing}</div>
+          <div>{(isNaN(total)) ? -owing : total}</div>
         </Paper>
       </Grid>
       <Grid item xs={12} md={8} lg={4}>
