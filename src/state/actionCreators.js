@@ -4,18 +4,6 @@ import AxiosAuth from "../axios/AxiosAuth";
 
 const splitsApi = 'https://split-the-bill-api.herokuapp.com/api/users/profile';
 
-export function increment(){
-    return {type: types.INCREMENT}
-}
-
-export function decrement (){
-    return {type: types.DECREMENT}
-}
-
-export function reset(){
-    return {type: types.RESET}
-}
-
 export const addUsers = (users) => ({
     type: types.ADD_USERS,
     payload: users,
