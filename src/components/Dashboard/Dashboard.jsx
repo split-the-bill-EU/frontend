@@ -5,7 +5,6 @@ import { useStyles } from '../Layout';
 import { Grid, Paper, } from '@material-ui/core';
 
 export const Dashboard = ({ debt }) => {
-  console.log(debt);
     const classes = useStyles();
     const styles = {height: '100px', backgroundColor: '#FFB884'}
 
