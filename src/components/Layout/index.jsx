@@ -18,6 +18,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems } from './listItems';
 import * as actionCreators from '../../state/actionCreators'
+import { red } from '@material-ui/core/colors';
 
 function Copyright() {
   return (
@@ -49,6 +50,8 @@ const useStyles = makeStyles(theme => ({
     ...theme.mixins.toolbar,
   },
   appBar: {
+    'background-color': "#B73119",
+    color: 'black',
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -73,6 +76,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   drawerPaper: {
+    'background-color': "#FFB884",
     position: 'relative',
     whiteSpace: 'nowrap',
     width: drawerWidth,
@@ -94,6 +98,7 @@ const useStyles = makeStyles(theme => ({
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
+    'background-color': "#B73119",
     flexGrow: 1,
     height: '100vh',
     overflow: 'auto',
@@ -103,6 +108,7 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(4),
   },
   paper: {
+    'background-color': "#FFB884",
     padding: theme.spacing(2),
     display: 'flex',
     overflow: 'auto',
@@ -149,11 +155,6 @@ export function Layout(props) {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Hello, {lumpState.currentUser.firstName}
           </Typography>
-          {/* <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton> */}
         </Toolbar>
       </AppBar>
       <Drawer
