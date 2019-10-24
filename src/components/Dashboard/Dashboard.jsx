@@ -11,23 +11,23 @@ export const Dashboard = ({ debt }) => {
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
         <Grid container spacing={3}>
-            <Grid item xs={12} md={8} lg={4}>
+            <Grid item xs={8} md={3} lg={4}>
                 <Paper className={fixedHeightPaper} style={styles}>
                 Total Balance
               </Paper>
             </Grid>
-            <Grid item xs={12} md={8} lg={4}>
+            <Grid item xs={8} md={3} lg={4}>
               <Paper className={fixedHeightPaper} style={styles}>
-                Owing
+                Owing Balance
               </Paper>
             </Grid>
-            <Grid item xs={12} md={4} lg={4}>
+            <Grid item xs={8} md={3} lg={4}>
               <Paper className={fixedHeightPaper} style={styles}>
-                Owed
+                Owed Balance
               </Paper>
             </Grid>
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
+            <Grid item xs={8} md={3} lg={4}>
+              <Paper className={classes.paper} style={styles}>
                 Orders
               </Paper>
             </Grid>

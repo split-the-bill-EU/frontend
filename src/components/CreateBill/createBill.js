@@ -61,13 +61,8 @@ const Button = styled.button`
     padding: 0.5em;
     text-decoration: none;
     border: 0;
-    cursor: pointer;`
-
-
-
-
-
-
+    cursor: pointer;
+`
 const createBillURL = 'https://split-the-bill-api.herokuapp.com/api/bills';
 
 const CreateBill = (props) => {

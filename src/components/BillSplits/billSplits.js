@@ -25,18 +25,19 @@ const Button = styled.button`
     border-radius: 0.3em;
     padding: 0.5em;
     text-decoration: none;
-    border: 0;`
+    border: 0;
 
-
+    &:hover{
+        background:#B73119 ;
+        color: white;
+    }
+`
 
 const approveURL = 'https://split-the-bill-api.herokuapp.com/api/splits'
 
 export function BillSplits(props) {
     const {billSplits, getBills} = props;
-
-
     const approve = (id) => {
-
         AxiosAuth().patch(`${approveURL}/${id}/approve`)
             .then(res => {
                 console.log(res.data);
@@ -71,7 +72,7 @@ export function BillSplits(props) {
     console.log(currentBillSplits);
 
     return (
-        <div>
+        <div style={{"display":"flex"}}>
             {
             currentBillSplits.map(billSplit => 
             <Split key={billSplit.id} split={billSplit} approve={approve}/>)

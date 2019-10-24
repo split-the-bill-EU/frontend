@@ -3,7 +3,6 @@ import AxiosAuth from '../../../axios/AxiosAuth';
 import UserComponent from '../../UserComponent';
 import styled from 'styled-components';
 import swal from '@sweetalert/with-react';
-import { Card } from '@material-ui/core';
 import {NavLink} from 'react-router-dom'
 
 export default function SplitBillsCard({ bill, setOwingUsers, owingUsers }) {
@@ -36,22 +35,26 @@ export default function SplitBillsCard({ bill, setOwingUsers, owingUsers }) {
         {bill.splits.length ? (
           <NavLink to={`/my_billsplits/${bill.id}`}
                   
-          ><button>View Splits</button></NavLink>
-        ) : (
-          <button
+          ><StyledButton>View Splits</StyledButton></NavLink>
+        ) :
+        <ParentDiv>
+           
+          <StyledButton
             onClick={() => {
               toggle();
               setOwingUsers([]);
             }}
           >
             {isSplitting ? 'Cancel' : 'Split'}
-          </button>
-        )}
+          </StyledButton>
+        
         {isSplitting ? (
-          <button onClick={() => split(bill.id)}>Done</button>
+          <StyledButton onClick={() => split(bill.id)}>Done</StyledButton>
         ) : (
           <></>
         )}
+        </ParentDiv>
+        }
       </StyledCard>
       <div>
         {isSplitting ? (
@@ -67,6 +70,40 @@ export default function SplitBillsCard({ bill, setOwingUsers, owingUsers }) {
   );
 }
 
-const StyledCard = styled(Card)`
-  margin: 0.2rem;
+const ParentDiv = styled.div`
+  display: flex;
+  justify-content: center;
+
+  button {
+    margin: 0 .5rem;
+    margin-bottom: .5rem;
+  }
 `;
+
+const StyledCard = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 15rem;
+    margin: 1.5em;
+    background-color: #FFB884;
+    box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);`
+
+const StyledButton = styled.button`
+    color: white;
+    background-color: #75C22F;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1em;
+    font-family: system-ui, sans-serif;
+    border-radius: 0.3em;
+    padding: 0.5em;
+    text-decoration: none;
+    border: 0;
+    margin-bottom: .5rem;
+
+    &:hover{
+        background:#B73119 ;
+        color: white;
+    }
+`

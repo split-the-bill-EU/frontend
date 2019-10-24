@@ -33,7 +33,7 @@ export const SplitBills = props => {
       <Button variant="contained" className={classes.button} component={Link} to='/create_bill'>
         Create A Bill
       </Button>
-      <div>
+      <div style={{"display":"flex"}}>
         {lumpState.currentUser.bills.map(bill => (
           <SplitBillsCard
             key={bill.id}
@@ -57,9 +57,4 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  > div {
-    display: flex;
-    
-  }
-`;
+`

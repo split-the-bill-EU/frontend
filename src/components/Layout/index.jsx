@@ -107,7 +107,6 @@ export const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(4),
   },
   paper: {
-    'background-color': "#FFF",
     padding: theme.spacing(2),
     display: 'flex',
     overflow: 'auto',

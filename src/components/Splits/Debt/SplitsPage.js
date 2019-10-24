@@ -87,13 +87,13 @@ export function SplitsPage (props) {
         return (
             <OuterDiv>
                 <InnerDiv>
-                <ul>
+                <div style={{"display": "flex"}}>
                     {
                         unpaidBills.map(split => (
                             <Splits key={split.id} split={split} settleUp={settleUp}/>
                         ))
                     }
-                </ul>
+                </div>
                     {
                         editing && (
                             <Formik

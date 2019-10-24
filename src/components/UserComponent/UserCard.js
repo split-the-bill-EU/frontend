@@ -36,4 +36,5 @@ const StyledCard = styled(Card)`
     display: flex;
     justify-content: space-evenly;
     margin-top: .4rem;
+    margin-right: .4rem;
 `
