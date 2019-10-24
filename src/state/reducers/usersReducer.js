@@ -2,6 +2,7 @@ import * as actionTypes from "../actionTypes";
 
 const initialState = {
     users: [],
+    name: '',
     currentUser: {
         "id": "",
         "firstName": "",
@@ -23,7 +24,8 @@ export default (state = initialState, action) => {
         case actionTypes.ADD_CURRENT_USER:
             return {
                 ...state,
-               currentUser: action.payload
+                currentUser: action.payload,
+                name: action.payload.firstName,
             }
     
         default:

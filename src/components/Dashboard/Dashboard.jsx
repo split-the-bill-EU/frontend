@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 import { useStyles } from '../Layout';
 import { Grid, Paper, } from '@material-ui/core';
 
-export const Dashboard = props => {
-    debugger
+export const Dashboard = ({ debt }) => {
+  console.log(debt);
     const classes = useStyles();
-    const styles = {height: '100px', 'background-color': '#FFB884'}
+    const styles = {height: '100px', backgroundColor: '#FFB884'}
 
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
@@ -35,5 +35,7 @@ export const Dashboard = props => {
           </Grid>
     )
 }
-
-export default connect(state => state)(Dashboard);
+const mapStateToProps = state => ({
+  debt: state.lumpState.currentUser.splits,
+})
+export default connect(mapStateToProps, )(Dashboard);

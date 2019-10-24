@@ -17,12 +17,6 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
-    <ListItem button component={NavLink} to="/create_bill">
-      <ListItemIcon>
-        <PaymentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Create Bill" />
-    </ListItem>
     <ListItem button component={NavLink} to="/my_bills">
       <ListItemIcon>
         <PaymentIcon />
