@@ -83,7 +83,6 @@ const ParentDiv = styled.div`
 const StyledCard = styled.div`
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     width: 15rem;
     margin: 1.5em;
     background-color: #FFB884;

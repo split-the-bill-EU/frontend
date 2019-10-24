@@ -31,7 +31,7 @@ export const getUsers = () => dispatch => {
     .then(res => {
         dispatch(addUsers(res.data.users))
     })
-    .catch(err => console.log(err))
+    .catch(err => alert(err.message))
 }
 
 export const getUserDetails = () => dispatch => {
@@ -39,7 +39,7 @@ export const getUserDetails = () => dispatch => {
         .then(res => {
         dispatch(currentUser(res.data.user))        
     })
-    .catch(err => console.log(err))
+    .catch(err => alert(err.message))
 }
 export const getSplits = () => dispatch => {
     AxiosAuth().get(splitsApi)
@@ -48,7 +48,7 @@ export const getSplits = () => dispatch => {
             dispatch({type: types.ADD_SPLITS, payload: splitsAray});
         })
         .catch(error => {
-            console.log(error.message);
+            alert(error.message);
         })
 }
 
@@ -56,11 +56,11 @@ export const getBills = () => dispatch => {
     AxiosAuth().get(splitsApi)
         .then(res => {
             const splitsAray = res.data.user.bills;
-            console.log(splitsAray);
+            // console.log(splitsAray);
             dispatch({type: types.ADD_BILLS, payload: splitsAray});
         })
         .catch(error => {
-            console.log(error.message);
+            alert(error.message);
         })
 }
 

@@ -56,12 +56,12 @@ export function SplitsPage (props) {
 
         AxiosAuth().patch(`${patchURL}/${splitToSettle}/settleUp?au&=`, payload)
             .then(res => {
-                console.log(res.data.message)
+                // console.log(res.data.message)
                 setEditing(false);
                 getSplits();
             })
             .catch(err => {
-                console.log(err.message)
+                // console.log(err.message)
             })
     }
 
