@@ -58,9 +58,7 @@ export const getOwingTotal = () => {
 export const getOwedTotal = () => {
 
 }
-export const getTotal = () => {
 
-}
 export const getPeopleOwing = () => {
 
 }
