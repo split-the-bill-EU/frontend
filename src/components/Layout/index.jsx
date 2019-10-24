@@ -50,7 +50,7 @@ export const useStyles = makeStyles(theme => ({
   },
   appBar: {
     'background-color': "#B73119",
-    color: 'black',
+    color: 'white',
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -107,7 +107,7 @@ export const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(4),
   },
   paper: {
-    'background-color': "#FFB884",
+    'background-color': "#FFF",
     padding: theme.spacing(2),
     display: 'flex',
     overflow: 'auto',

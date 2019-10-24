@@ -15,7 +15,7 @@ const Card = styled.div`
 
 const OuterDiv = styled.div`
     display: flex;
-    background-color: whitesmoke;
+    background-color: white;
     height: 100vh;
     flex-basis: 100%;
     justify-content: space-around;
