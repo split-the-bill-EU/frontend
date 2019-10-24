@@ -4,6 +4,7 @@ import UserComponent from '../../UserComponent';
 import styled from 'styled-components';
 import swal from '@sweetalert/with-react';
 import { Card } from '@material-ui/core';
+import {NavLink} from 'react-router-dom'
 
 export default function SplitBillsCard({ bill, setOwingUsers, owingUsers }) {
   const [isSplitting, setSplitting] = useState(false);
@@ -33,7 +34,9 @@ export default function SplitBillsCard({ bill, setOwingUsers, owingUsers }) {
         <p style={{ color: 'red' }}>Amount: {bill.amount}</p>
         <p>status: {bill.status}</p>
         {bill.splits.length ? (
-          <button>View Splits</button>
+          <NavLink to={`/my_billsplits/${bill.id}`}
+                  
+          ><button>View Splits</button></NavLink>
         ) : (
           <button
             onClick={() => {
