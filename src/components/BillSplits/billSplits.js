@@ -54,7 +54,8 @@ export function BillSplits(props) {
                     button: 'OK',                 
                     });
                 }
-                props.history.push(`/my_billsplits/${id}`)
+                // props.history.push(`/my_billsplits/${props.match.params.billId}`)
+                getBills();
             })
             .catch(err => {
                 console.log(err.message)
