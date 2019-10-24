@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -19,6 +20,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems } from './listItems';
+import * as actionCreators from '../../state/actionCreators'
 
 function Copyright() {
   return (
@@ -114,8 +116,12 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export function Layout({ children, title }) {
-  // debugger
+export function Layout(props) {
+  const { lumpState, title, children, getUserDetails } = props;
+  useEffect(() => {
+    getUserDetails();
+  },[getUserDetails])
+  
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -143,11 +149,14 @@ export function Layout({ children, title }) {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             {title}
           </Typography>
-          <IconButton color="inherit">
+          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+            Hello, {lumpState.currentUser.firstName}
+          </Typography>
+          {/* <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />
             </Badge>
-          </IconButton>
+          </IconButton> */}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -181,4 +190,4 @@ export function Layout({ children, title }) {
   );
 }
 
-export default withRouter(Layout)
+export default connect(state => state, actionCreators)(Layout)

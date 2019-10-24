@@ -1,6 +1,5 @@
 import * as actionTypes from "../actionTypes";
 
-const initialUsers = [];
 const initialState = {
     users: [],
     currentUser: {

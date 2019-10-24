@@ -5,14 +5,14 @@ import SplitBillsCard from './SplitBillsCard';
 import styled from 'styled-components';
 
 export const SplitBills = props => {
-  // console.log(props)
+  
   const { lumpState, getUserDetails, getUsers } = props;
 
   const [owingUsers, setOwingUsers] = useState([]);
   useEffect(() => {
     getUserDetails();
     getUsers();
-  }, []);
+  }, [getUserDetails, getUsers]);
   return (
     
       <StyledDiv>

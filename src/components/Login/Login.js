@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
+import * as actionCreators from '../../state/actionCreators';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -85,9 +87,7 @@ const validationSchema = yup.object().shape({
 
 const loginURL = 'https://split-the-bill-api.herokuapp.com/api/auth/login';
 
-const Login = (props) => {
-
-
+export const Login = (props) => {
     const onLogin = (formValues, actions) => {
         const details = {
             email: formValues.email,
@@ -104,7 +104,7 @@ const Login = (props) => {
             })
             .catch(error => {
                 localStorage.clear();
-                alert(error.response.data.message);
+                alert(error.response.data.message || error.message);
             });
     };
 
@@ -160,4 +160,4 @@ const Login = (props) => {
     );
 }
 
-export default Login;
+export default connect(state => state, actionCreators)(Login);

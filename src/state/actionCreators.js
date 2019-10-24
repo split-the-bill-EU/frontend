@@ -29,7 +29,6 @@ export const currentUser = (user) => ({
 export const getUsers = () => dispatch => {
     AxiosAuth().get('https://split-the-bill-api.herokuapp.com/api/users')
     .then(res => {
-        console.log(res.data)
         dispatch(addUsers(res.data.users))
     })
     .catch(err => console.log(err))
@@ -37,8 +36,7 @@ export const getUsers = () => dispatch => {
 
 export const getUserDetails = () => dispatch => {
     AxiosAuth().get('https://split-the-bill-api.herokuapp.com/api/users/profile')
-    .then(res => {
-        console.log(res.data);
+        .then(res => {
         dispatch(currentUser(res.data.user))        
     })
     .catch(err => console.log(err))
@@ -47,7 +45,6 @@ export const getSplits = () => dispatch => {
     AxiosAuth().get(splitsApi)
         .then(res => {
             const splitsAray = res.data.user.splits;
-            console.log(splitsAray);
             dispatch({type: types.ADD_SPLITS, payload: splitsAray});
         })
         .catch(error => {
