@@ -7,6 +7,7 @@ import { Grid, Paper, } from '@material-ui/core';
 export const Dashboard = props => {
 
   const { debt, bills, userId } = props;
+  debugger
   let owed = [];
   let amountOwed
   const owing = (debt.reduce((accum, bill) => accum + Number(bill.amount) - Number(bill.amountPaid), 0 )).toFixed(2)
