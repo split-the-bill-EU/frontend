@@ -8,7 +8,7 @@ import Signup from './components/Signup/Signup';
 import withAuthCheck from './AuthCheck';
 import Dashboard from './components/Dashboard';
 import CreateBill from './components/CreateBill';
-import BillSplits from './Billsplits/billSplits';
+import BillSplits from './components/BillSplits';
 
 function App() {
   return (

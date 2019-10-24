@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
-import * as actionCreators from '../state/actionCreators';
-import AxiosAuth from '../axios/AxiosAuth';
+import { withRouter } from 'react-router-dom';
+import * as actionCreators from '../../state/actionCreators';
+import AxiosAuth from '../../axios/AxiosAuth';
 import swal from '@sweetalert/with-react';
 import styled from 'styled-components';
 
@@ -30,7 +31,7 @@ const Button = styled.button`
 
 const approveURL = 'https://split-the-bill-api.herokuapp.com/api/splits'
 
-export function BillSplits (props) {
+export function BillSplits(props) {
     const {billSplits, getBills} = props;
 
 
@@ -99,4 +100,4 @@ const mapStateToProps = state => ({
 export default connect (
     mapStateToProps,
     actionCreators
-) (BillSplits)
+) (withRouter(BillSplits))
