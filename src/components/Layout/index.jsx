@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
-import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
@@ -10,15 +10,14 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems } from './listItems';
+import * as actionCreators from '../../state/actionCreators'
 
 function Copyright() {
   return (
@@ -35,7 +34,7 @@ function Copyright() {
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles(theme => ({
+export const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
   },
@@ -50,6 +49,8 @@ const useStyles = makeStyles(theme => ({
     ...theme.mixins.toolbar,
   },
   appBar: {
+    'background-color': "#B73119",
+    color: 'black',
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -74,6 +75,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   drawerPaper: {
+    'background-color': "#FFB884",
     position: 'relative',
     whiteSpace: 'nowrap',
     width: drawerWidth,
@@ -95,6 +97,7 @@ const useStyles = makeStyles(theme => ({
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
+    'background-color': "#B73119",
     flexGrow: 1,
     height: '100vh',
     overflow: 'auto',
@@ -104,6 +107,7 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(4),
   },
   paper: {
+    'background-color': "#FFB884",
     padding: theme.spacing(2),
     display: 'flex',
     overflow: 'auto',
@@ -114,8 +118,12 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export function Layout({ children, title }) {
-  // debugger
+export function Layout(props) {
+  const { lumpState, title, children, getUserDetails } = props;
+  useEffect(() => {
+    getUserDetails();
+  },[getUserDetails])
+  
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -143,11 +151,9 @@ export function Layout({ children, title }) {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             {title}
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
+          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+            Hello, {lumpState.currentUser.firstName}
+          </Typography>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -181,4 +187,4 @@ export function Layout({ children, title }) {
   );
 }
 
-export default withRouter(Layout)
+export default connect(state => state, actionCreators)(Layout)

@@ -3,19 +3,37 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../../../state/actionCreators';
 import SplitBillsCard from './SplitBillsCard';
 import styled from 'styled-components';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 
 export const SplitBills = props => {
-  // console.log(props)
-  const { lumpState, getUserDetails, getUsers } = props;
+
+  const useStyles = makeStyles(theme => ({
+    button: {
+      margin: theme.spacing(1),
+    },
+    input: {
+      display: 'none',
+    },
+  }));
+  
+  
+  const classes = useStyles();
+  
+  const { lumpState, getUsers } = props;
 
   const [owingUsers, setOwingUsers] = useState([]);
   useEffect(() => {
-    getUserDetails();
     getUsers();
-  }, []);
+  }, [getUsers]);
   return (
     
-      <StyledDiv>
+    <StyledDiv>
+      <Button variant="contained" className={classes.button} component={Link} to='/create_bill'>
+        Create A Bill
+      </Button>
+      <div>
         {lumpState.currentUser.bills.map(bill => (
           <SplitBillsCard
             key={bill.id}
@@ -24,7 +42,8 @@ export const SplitBills = props => {
             owingUsers={owingUsers}
           />
         ))}
-      </StyledDiv>
+        </div>
+    </StyledDiv>
     
   );
 };
@@ -36,8 +55,11 @@ export default connect(
 
 const StyledDiv = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
 
   > div {
-    width: 30%;
+    display: flex;
+    
   }
 `;

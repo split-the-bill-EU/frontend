@@ -81,7 +81,7 @@ const Signup = (props) => {
             .then(res => {
                 console.log(res.data.message);
                 actions.resetForm();
-                // props.history.push('/login')
+                props.history.push('/')
             })
             .catch(error => {
                 debugger

@@ -1,11 +1,11 @@
 import React from 'react';
-import SplitBills from './SplitBills';
 import Layout from '../../Layout';
+import SplitsPage from './SplitsPage';
 
 export default () => {
     return (
-        <Layout title='My Credit'>
-            <SplitBills />
+        <Layout title='My Debt'>
+            <SplitsPage />
         </Layout>
     )
 }
