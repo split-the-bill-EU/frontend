@@ -18,7 +18,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems } from './listItems';
 import * as actionCreators from '../../state/actionCreators'
-import { red } from '@material-ui/core/colors';
 
 function Copyright() {
   return (
