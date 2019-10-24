@@ -4,7 +4,7 @@ import Layout from '../../Layout';
 
 export default () => {
     return (
-        <Layout title='My Credit'>
+        <Layout title='My Bills'>
             <SplitBills />
         </Layout>
     )

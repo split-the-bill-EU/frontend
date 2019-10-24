@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { useStyles } from '../Layout';
 import { Grid, Paper, } from '@material-ui/core';
 
-export const Dashboard = () => {
+export const Dashboard = props => {
+    debugger
     const classes = useStyles();
     const styles = {height: '100px', 'background-color': '#FFB884'}
 
