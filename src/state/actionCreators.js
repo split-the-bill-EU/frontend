@@ -55,15 +55,16 @@ export const getSplits = () => dispatch => {
         })
 }
 
+export const getBills = () => dispatch => {
+    AxiosAuth().get(splitsApi)
+        .then(res => {
+            const splitsAray = res.data.user.bills;
+            console.log(splitsAray);
+            dispatch({type: types.ADD_BILLS, payload: splitsAray});
+        })
+        .catch(error => {
+            console.log(error.message);
+        })
+}
 
-// export const getSplits = () => dispatch => {
-//     const splitsPromise = AxiosAuth(splitsApi);
 
-//     Promise.all([splitsPromise])
-//         .then(([splitsApiResponse]) => {
-//             debugger
-//             const splits = splitsApiResponse.data.user.splits;
-
-//             dispatch({type: types.ADD_SPLITS, payload: splits});
-//         });
-// }
