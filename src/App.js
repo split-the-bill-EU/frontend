@@ -8,6 +8,7 @@ import Signup from './components/Signup/Signup';
 import withAuthCheck from './AuthCheck';
 import Dashboard from './components/Dashboard';
 import CreateBill from './components/CreateBill';
+import BillSplits from './Billsplits/billSplits';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path='/my_credit' render={props => withAuthCheck(Credit, props)} />
       <Route path='/my_debit' render={props => withAuthCheck(Debit, props)} />
       <Route path='/create_bill' render={props => withAuthCheck(CreateBill, props)} />
+      <Route path='/my_billsplits/:billId' render={props => withAuthCheck(BillSplits, props)} />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import splitsReducer from './splitsReducer';
 
 const rootReducer = combineReducers({
     splits: splitsReducer,
-    lumpState: usersReducer
+    lumpState: usersReducer,
 });
 
 export default rootReducer;
