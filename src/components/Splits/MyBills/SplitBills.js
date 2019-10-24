@@ -33,7 +33,7 @@ export const SplitBills = props => {
       <Button variant="contained" className={classes.button} component={Link} to='/create_bill'>
         Create A Bill
       </Button>
-      <div style={{"display":"flex"}}>
+      <ParentDiv>
         {lumpState.currentUser.bills.map(bill => (
           <SplitBillsCard
             key={bill.id}
@@ -42,7 +42,7 @@ export const SplitBills = props => {
             owingUsers={owingUsers}
           />
         ))}
-        </div>
+        </ParentDiv>
     </StyledDiv>
     
   );
@@ -52,6 +52,11 @@ export default connect(
   state => state,
   actionCreators,
 )(SplitBills);
+
+const ParentDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
 
 const StyledDiv = styled.div`
   display: flex;

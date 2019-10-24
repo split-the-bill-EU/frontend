@@ -72,12 +72,12 @@ export function BillSplits(props) {
     console.log(currentBillSplits);
 
     return (
-        <div style={{"display":"flex"}}>
+        <ParentDiv>
             {
             currentBillSplits.map(billSplit => 
             <Split key={billSplit.id} split={billSplit} approve={approve}/>)
             }
-        </div>
+        </ParentDiv>
     );
 }
 
@@ -102,3 +102,8 @@ export default connect (
     mapStateToProps,
     actionCreators
 ) (withRouter(BillSplits))
+
+const ParentDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`

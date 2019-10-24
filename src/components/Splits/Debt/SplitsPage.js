@@ -5,10 +5,15 @@ import * as creators from '../../../state/actionCreators';
 import AxiosAuth from '../../../axios/AxiosAuth';
 import styled from 'styled-components';
 
+const ParentDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
+
 const Card = styled.div`
     display: flex;
     flex-direction: column;
-    width: 20%;
+    width: 15rem;
     margin: 1.5em;
     background-color: #FFB884;
     box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);`
@@ -87,13 +92,13 @@ export function SplitsPage (props) {
         return (
             <OuterDiv>
                 <InnerDiv>
-                <div style={{"display": "flex"}}>
+                <ParentDiv>
                     {
                         unpaidBills.map(split => (
                             <Splits key={split.id} split={split} settleUp={settleUp}/>
                         ))
                     }
-                </div>
+                </ParentDiv>
                     {
                         editing && (
                             <Formik
