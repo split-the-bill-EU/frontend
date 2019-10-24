@@ -11,7 +11,7 @@ const Card = styled.div`
     flex-direction: column;
     width: 20%;
     margin: 1.5em;
-    background-color: #FFB884;
+    background-color: blue;
     box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);`
 
 const Button = styled.button`

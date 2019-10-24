@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { useStyles } from '../Layout';
 import { Grid, Paper, } from '@material-ui/core';
 
-export const Dashboard = ({ debt }) => {
-  console.log(debt);
+export const Dashboard = props => {
+  const { debt, bills } = props;
   const classes = useStyles();
   const styles = { height: '100px', backgroundColor: '#FFB884' };
     const owing = debt.reduce((accum, bill) => accum + Number(bill.amount) - Number(bill.amountPaid), 0 )
@@ -16,7 +16,7 @@ export const Dashboard = ({ debt }) => {
       <Grid item xs={12} md={8} lg={4}>
         <Paper className={fixedHeightPaper} style={styles}>
           Total Balance
-              </Paper>
+        </Paper>
       </Grid>
       <Grid item xs={12} md={8} lg={4}>
         <Paper className={fixedHeightPaper} style={styles}>
@@ -39,5 +39,6 @@ export const Dashboard = ({ debt }) => {
 }
 const mapStateToProps = state => ({
   debt: state.lumpState.currentUser.splits,
+  bills: state.lumpState.currentUser.bills,
 })
 export default connect(mapStateToProps)(Dashboard);
