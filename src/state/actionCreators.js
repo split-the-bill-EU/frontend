@@ -56,7 +56,6 @@ export const getBills = () => dispatch => {
     AxiosAuth().get(splitsApi)
         .then(res => {
             const splitsAray = res.data.user.bills;
-            console.log(splitsAray);
             dispatch({type: types.ADD_BILLS, payload: splitsAray});
         })
         .catch(error => {

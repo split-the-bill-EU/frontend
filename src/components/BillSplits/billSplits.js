@@ -39,7 +39,6 @@ export function BillSplits(props) {
 
         AxiosAuth().patch(`${approveURL}/${id}/approve`)
             .then(res => {
-                console.log(res.data);
                 if (res.data) {
                     swal({
                     title: 'Good!',
@@ -56,20 +55,15 @@ export function BillSplits(props) {
     }
 
     useEffect(() => {
-        console.log(props.match.params.billId);
     }, [props.match.params.billId])
 
     useEffect(() => {
         getBills() 
     }, [getBills]);
 
-    console.log(billSplits);
     const currentId = props.match.params.billId;
     const currentbill = billSplits.find(({id}) => id === currentId);
-    console.log(currentbill);
     const currentBillSplits = currentbill.splits;
-    console.log(currentBillSplits);
-
     return (
         <div>
             {
