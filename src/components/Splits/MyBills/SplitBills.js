@@ -21,12 +21,10 @@ export const SplitBills = props => {
   
   const classes = useStyles();
   
-  const { lumpState, getUsers } = props;
+  const { lumpState } = props;
 
   const [owingUsers, setOwingUsers] = useState([]);
-  useEffect(() => {
-    getUsers();
-  }, [getUsers]);
+  
   return (
     
     <StyledDiv>

@@ -119,10 +119,11 @@ export const useStyles = makeStyles(theme => ({
 }));
 
 export function Layout(props) {
-  const { lumpState, title, children, getUserDetails } = props;
+  const { lumpState, title, children, getUserDetails, getUsers } = props;
   useEffect(() => {
     getUserDetails();
-  },[getUserDetails])
+    getUsers();
+  },[getUserDetails, getUsers])
   
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
