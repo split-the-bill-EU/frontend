@@ -25,6 +25,7 @@ export const getUsers = () => dispatch => {
 export const getUserDetails = () => dispatch => {
     AxiosAuth().get('https://split-the-bill-api.herokuapp.com/api/users/profile')
         .then(res => {
+            debugger
         dispatch(currentUser(res.data.user))        
     })
     .catch(err => console.log(err))
@@ -51,4 +52,18 @@ export const getBills = () => dispatch => {
         })
 }
 
+export const getOwingTotal = () => {
+    
+}
+export const getOwedTotal = () => {
 
+}
+export const getTotal = () => {
+
+}
+export const getPeopleOwing = () => {
+
+}
+export const getPeopleOwed = () => {
+
+}
