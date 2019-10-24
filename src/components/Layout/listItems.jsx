@@ -17,11 +17,23 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
-    <ListItem button component={NavLink} to="/my_bills">
+    <ListItem button component={NavLink} to="/create_bill">
       <ListItemIcon>
         <PaymentIcon />
       </ListItemIcon>
-      <ListItemText primary="All Bills" />
+      <ListItemText primary="Create Bill" />
+    </ListItem>
+    <ListItem button component={NavLink} to="/my_credit">
+      <ListItemIcon>
+        <PaymentIcon />
+      </ListItemIcon>
+      <ListItemText primary="My Credit" />
+    </ListItem>
+    <ListItem button component={NavLink} to="/my_debit">
+      <ListItemIcon>
+        <PaymentIcon />
+      </ListItemIcon>
+      <ListItemText primary="My Debit" />
     </ListItem>
     
     <ListItem button component={NavLink} to="/" onClick={logout}>

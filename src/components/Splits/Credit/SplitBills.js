@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import * as actionCreators from '../../state/actionCreators';
+import * as actionCreators from '../../../state/actionCreators';
 import SplitBillsCard from './SplitBillsCard';
 import styled from 'styled-components';
-import Layout from '../Layout/';
+
 export const SplitBills = props => {
   // console.log(props)
   const { lumpState, getUserDetails, getUsers } = props;
@@ -14,7 +14,7 @@ export const SplitBills = props => {
     getUsers();
   }, []);
   return (
-    <Layout>
+    
       <StyledDiv>
         {lumpState.currentUser.bills.map(bill => (
           <SplitBillsCard
@@ -25,7 +25,7 @@ export const SplitBills = props => {
           />
         ))}
       </StyledDiv>
-    </Layout>
+    
   );
 };
 

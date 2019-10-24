@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import AxiosAuth from '../../axios/AxiosAuth';
-import UserComponent from '../UsersComponent';
+import AxiosAuth from '../../../axios/AxiosAuth';
+import UserComponent from '../../UserComponent';
 import styled from 'styled-components';
 import swal from '@sweetalert/with-react';
 import { Card } from '@material-ui/core';

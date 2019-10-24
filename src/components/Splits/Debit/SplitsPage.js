@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
-import * as creators from '../../state/actionCreators';
-import AxiosAuth from '../../axios/AxiosAuth';
+import * as creators from '../../../state/actionCreators';
+import AxiosAuth from '../../../axios/AxiosAuth';
 import styled from 'styled-components';
 
 const Card = styled.div`
@@ -82,40 +82,43 @@ export function SplitsPage (props) {
       };
 
     const unpaidBills = splits.filter(split => split.amount > 0);
-
-    return (
-        <OuterDiv>
-            <InnerDiv>
-            <ul>
-                {
-                    unpaidBills.map(split => (
-                        <Splits key={split.id} split={split} settleUp={settleUp}/>
-                    ))
-                }
-            </ul>
-                {
-                    editing && (
-                        <Formik
-                        initialValues={{amount: ''}}
-                        onSubmit={settle}
-                        render={() => (
-                            <Form>
-                                <h2>Enter amount to be paid</h2>
-                              <div>
-                                <Field style={styles2} name='amount' type="text" placeholder='Amount' />
-                              </div>
-                               <div>
-                               <Button type='submit'>save</Button>
-                               <Button onClick={() => setEditing(false)}>cancel</Button>
-                              </div>
-                            </Form>
-                        )}
-                      />
-                    )
-                }
-            </InnerDiv>
-        </OuterDiv>
-    )
+    
+    if(unpaidBills.length) {
+        return (
+            <OuterDiv>
+                <InnerDiv>
+                <ul>
+                    {
+                        unpaidBills.map(split => (
+                            <Splits key={split.id} split={split} settleUp={settleUp}/>
+                        ))
+                    }
+                </ul>
+                    {
+                        editing && (
+                            <Formik
+                            initialValues={{amount: ''}}
+                            onSubmit={settle}
+                            render={() => (
+                                <Form>
+                                    <h2>Enter amount to be paid</h2>
+                                <div>
+                                    <Field style={styles2} name='amount' type="text" placeholder='Amount' />
+                                </div>
+                                <div>
+                                <Button type='submit'>save</Button>
+                                <Button onClick={() => setEditing(false)}>cancel</Button>
+                                </div>
+                                </Form>
+                            )}
+                        />
+                        )
+                    }
+                </InnerDiv>
+            </OuterDiv>
+        )
+    }
+    return <div>No Unpaid Bills</div>
 }
 
 
