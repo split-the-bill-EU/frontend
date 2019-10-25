@@ -12,6 +12,8 @@ export const SplitBills = props => {
   const useStyles = makeStyles(theme => ({
     button: {
       margin: theme.spacing(1),
+      background:"#555555",
+      color: 'white'
     },
     input: {
       display: 'none',

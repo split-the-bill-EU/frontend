@@ -17,7 +17,7 @@ const InnerDiv = styled.div`
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    background-color: #FFB884;
+    background-color: #F7A240;
     border-radius: 1em;
     justify-content: space-evenly;
     width: 50%;

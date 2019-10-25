@@ -9,9 +9,11 @@ import styled from 'styled-components';
 const Card = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     width: 20%;
     margin: 1.5em;
-    background-color: blue;
+    background-color: #070F11;
+    color: white;
     box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);`
 
 const Canvas = styled.div`
@@ -87,12 +89,12 @@ function Split(props){
 
     return (
         <Card>
-            <div style={{ color: 'red' }}>Status: {split.status}</div>
+            <h2 style={{ color: 'red' }}>Status: {split.status}</h2>
             <div>Amount: {split.amount}</div>
             { split.status === 'pending' ?
             (<Button onClick={() => approve(split.id)}>Confirm</Button>) :
             (<div style={{ color: 'white', 
-                            backgroundColor: 'orange',
+                            backgroundColor: '#555555',
                             // width: '90%',
                             margin: '1.5em',
                             fontSize: '1em',

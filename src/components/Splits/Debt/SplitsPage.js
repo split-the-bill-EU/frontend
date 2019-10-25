@@ -10,7 +10,9 @@ const Card = styled.div`
     flex-direction: column;
     width: 20%;
     margin: 1.5em;
-    background-color: #FFB884;
+    background-color: #070F11; 
+    border-radius: 0.5em;
+    color: white;
     box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);`
 
 const OuterDiv = styled.div`
@@ -23,17 +25,17 @@ const OuterDiv = styled.div`
 
 const InnerDiv = styled.div`
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     flex-basis: 90%;
-    height: 90%;
+    height: 100%;
     justify-content: space-between;
     align-self: center;`
 
 const Button = styled.button`
     color: white;
-    background-color: #75C22F;
+    background-color: #91BF26;
     text-transform: uppercase;
-    margin: 1.5em;
+    margin: 2em;
     text-align: center;
     font-size: 1em;
     font-family: system-ui, sans-serif;
@@ -42,6 +44,14 @@ const Button = styled.button`
     text-decoration: none;
     border: 0;
     cursor: pointer;`
+
+const Top = styled.ul`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;`
+
+const Bottom = styled.ul`
+    justify-content: center;`
 
 const initalSplit = ''
 const patchURL = 'https://split-the-bill-api.herokuapp.com/api/splits'
@@ -75,11 +85,18 @@ export function SplitsPage (props) {
     }, [getSplits]);
 
     const styles2 = {
-        margin: '5px',
-        width: '200px',
-        height: '50px',
-        borderRadius: '10px',
+        margin: '1em',
+        width: '15em',
+        height: '2em',
+        borderRadius: '0.3em',
+        border: 0
       };
+
+    const formStyles = {
+    'backgroundColor': 'lightgrey',
+    padding: '1.5em',
+    color: 'white',
+    };
 
     const unpaidBills = splits.filter(split => split.amount > 0);
     
@@ -87,25 +104,30 @@ export function SplitsPage (props) {
         return (
             <OuterDiv>
                 <InnerDiv>
-                <ul>
+                <Top>
                     {
                         unpaidBills.map(split => (
                             <Splits key={split.id} split={split} settleUp={settleUp}/>
                         ))
                     }
-                </ul>
+                </Top>
+                <Bottom>
                     {
                         editing && (
                             <Formik
                             initialValues={{amount: ''}}
                             onSubmit={settle}
                             render={() => (
-                                <Form>
+                                <Form style={formStyles}>
                                     <h2>Enter amount to be paid</h2>
                                 <div>
                                     <Field style={styles2} name='amount' type="text" placeholder='Amount' />
                                 </div>
-                                <div>
+                                <div style={{ color: 'white',
+                                    display: 'flex',
+                                    margin: '1.5em',
+                                    fontSize: '1em',
+                                    padding: '0.5em'}}>
                                 <Button type='submit'>save</Button>
                                 <Button onClick={() => setEditing(false)}>cancel</Button>
                                 </div>
@@ -114,6 +136,7 @@ export function SplitsPage (props) {
                         />
                         )
                     }
+                </Bottom>
                 </InnerDiv>
             </OuterDiv>
         )

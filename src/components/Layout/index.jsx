@@ -49,7 +49,7 @@ export const useStyles = makeStyles(theme => ({
     ...theme.mixins.toolbar,
   },
   appBar: {
-    'background-color': "#B73119",
+    'background-color': "whitesmoke", //#B73119
     color: 'black',
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
@@ -75,8 +75,7 @@ export const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   drawerPaper: {
-    'background-color': "#FFB884",
-    position: 'relative',
+    'background-color': "#F7A240", //#picton blue
     whiteSpace: 'nowrap',
     width: drawerWidth,
     transition: theme.transitions.create('width', {
@@ -97,7 +96,7 @@ export const useStyles = makeStyles(theme => ({
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
-    'background-color': "#B73119",
+    'background-color': "#FFFFFF", //white
     flexGrow: 1,
     height: '100vh',
     overflow: 'auto',
@@ -107,14 +106,14 @@ export const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(4),
   },
   paper: {
-    'background-color': "#FFB884",
+    'background-color': "whitesmoke",
     padding: theme.spacing(2),
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
   },
   fixedHeight: {
-    height: 540,
+    height: 570,
   },
   cursor: {
     cursor: 'pointer'

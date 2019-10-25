@@ -10,7 +10,7 @@ export const Dashboard = props => {
   const { owed, owing, setListOwing, setListToOwed, splitsList, splitsListTitle } = props; 
   const total = (owed - owing).toFixed(2)  
   const classes = useStyles();
-  const styles = { height: '100px', backgroundColor: '#FFB884', };  
+  const styles = { height: '12em', backgroundColor: '#070F11', color: 'white', };  
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const fixedHeightPapercursor = clsx(classes.cursor, classes.paper, classes.fixedHeight);
 
@@ -18,20 +18,20 @@ export const Dashboard = props => {
     <Grid container spacing={3}>
       <Grid item xs={12} md={4} lg={4}>
         <Paper className={fixedHeightPaper} style={styles} >
-          Total Balance
-          <div>{(isNaN(total)) ? -owing : total}</div>
+          <h3>Total Balance</h3>
+          <h2>{(isNaN(total)) ? -owing : total}</h2>
         </Paper>
       </Grid>
       <Grid item xs={12} md={4} lg={4}>
         <Paper className={fixedHeightPapercursor} style={styles} onClick={setListOwing}>
-          Owing
-          <div>{owing}</div>
+          <h3>Owing</h3>
+          <h2>{owing}</h2>
         </Paper>
       </Grid>
       <Grid item xs={12} md={4} lg={4}>
         <Paper className={fixedHeightPapercursor} style={styles} onClick={setListToOwed}>
-          Owed
-          <div>{owed}</div>
+          <h3>Owed</h3>
+          <h2>{owed}</h2>
         </Paper>
       </Grid>
       <Grid item xs={12}>
