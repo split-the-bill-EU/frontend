@@ -24,10 +24,12 @@ export const getUserAndUsers = () => dispatch => {
         .then(response => {
             const userDetails = response[0].data.user;
             const users = response[1].data.users;
-            dispatch(currentUser(userDetails))        
-            dispatch(getOwingTotal(userDetails))        
-            dispatch(getOwedTotal(userDetails))
+            dispatch(currentUser(userDetails))
             dispatch(addUsers(users))
+            dispatch(getOwingTotal(userDetails))        
+            dispatch(getOwedTotal(userDetails))            
+            dispatch(getPeopleOwingMe(userDetails, users))
+            dispatch(getPeopleIOwe(userDetails, users))
         })
         .catch(error => {
             alert(error.message)
@@ -98,11 +100,41 @@ export const getOwedTotal = user => dispatch => {
     payload: owed,})
 }
 
-export const getPeopleOwingMe = user => ({
-    type: types.SET_SPLITS_INFO,
-    payload: { title: 'People Owing Me', list: 'list'}    
+export const getPeopleOwingMe = (user, users) => dispatch => {
+    const bills = user.bills;
+    let peopleOwingMe = [];
+    bills.forEach(bill => {
+        const filteredSplits = bill.splits.filter(split => split.userId !== user.id);
+        filteredSplits.forEach(split => {
+        users.forEach(user => {
+            if (user.id === split.userId) {
+            peopleOwingMe.push(`${user.firstName}, ${split.amount} for ${bill.title}`)
+            }
+        })
+        })
+    })
+    dispatch({type: types.SET_PEOPLE_OWING_ME,
+    payload: { title: 'People Owing Me', list: peopleOwingMe} })   
+}
+
+export const getPeopleIOwe = (user, users) => dispatch => {
+    const debts = user.splits;
+    let peopleIOwe = [];
+    debts.forEach(debt => {
+        users.forEach(user => {
+        if (user.id === debt.bill.userId) {    
+            peopleIOwe.push(`${user.firstName}, ${debt.bill.amount} for ${debt.bill.title}`)
+        }
+        })    
+    })
+    dispatch({type: types.SET_PEOPLE_I_OWE,
+    payload: { title: "People I'm Owing", list: peopleIOwe}}) 
+}
+
+export const setListToOwed = () => ({
+    type: types.SET_LIST_OWED
 })
-export const getPeopleImOwing = user => ({
-    type: types.SET_SPLITS_INFO,
-    payload: { title: "People I'm Owing", list: 'list'} 
+
+export const setListOwing = () => ({
+    type: types.SET_LIST_OWING
 })

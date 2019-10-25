@@ -116,10 +116,13 @@ export const useStyles = makeStyles(theme => ({
   fixedHeight: {
     height: 540,
   },
+  cursor: {
+    cursor: 'pointer'
+  }
 }));
 
 export function Layout(props) {
-  // debugger
+  
   const { lumpState, title, children, getUserAndUsers } = props;
   useEffect(() => {
     getUserAndUsers();
