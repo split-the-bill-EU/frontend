@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import styled from 'styled-components';
@@ -70,8 +71,7 @@ const Button = styled.button`
 
 const createBillURL = 'https://split-the-bill-api.herokuapp.com/api/bills';
 
-const CreateBill = (props) => {
-
+export const CreateBill = (props) => {
 
     const createBill = (formValues, actions) => {
         const details = {
@@ -85,6 +85,7 @@ const CreateBill = (props) => {
             .then(res => {
                 actions.resetForm();
                 alert(res.statusText);
+                props.history.push('/my_bills')
             })
             .catch(error => {
                 localStorage.clear();
@@ -154,4 +155,4 @@ const CreateBill = (props) => {
     );
 }
 
-export default CreateBill;
+export default withRouter(CreateBill);

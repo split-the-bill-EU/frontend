@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../../state/actionCreators';
 import SplitBillsCard from './SplitBillsCard';
@@ -21,12 +21,10 @@ export const SplitBills = props => {
   
   const classes = useStyles();
   
-  const { lumpState, getUsers } = props;
+  const { lumpState } = props;
 
   const [owingUsers, setOwingUsers] = useState([]);
-  useEffect(() => {
-    getUsers();
-  }, [getUsers]);
+  
   return (
     
     <StyledDiv>

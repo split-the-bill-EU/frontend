@@ -11,7 +11,7 @@ const Card = styled.div`
     flex-direction: column;
     width: 20%;
     margin: 1.5em;
-    background-color: #FFB884;
+    background-color: blue;
     box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);`
 
 const Button = styled.button`
@@ -39,7 +39,6 @@ export function BillSplits(props) {
 
         AxiosAuth().patch(`${approveURL}/${id}/approve`)
             .then(res => {
-                console.log(res.data);
                 if (res.data) {
                     swal({
                     title: 'Good!',
@@ -56,20 +55,15 @@ export function BillSplits(props) {
     }
 
     useEffect(() => {
-        console.log(props.match.params.billId);
     }, [props.match.params.billId])
 
     useEffect(() => {
         getBills() 
     }, [getBills]);
 
-    console.log(billSplits);
     const currentId = props.match.params.billId;
     const currentbill = billSplits.find(({id}) => id === currentId);
-    console.log(currentbill);
     const currentBillSplits = currentbill.splits;
-    console.log(currentBillSplits);
-
     return (
         <div>
             {

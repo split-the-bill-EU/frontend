@@ -116,13 +116,17 @@ export const useStyles = makeStyles(theme => ({
   fixedHeight: {
     height: 540,
   },
+  cursor: {
+    cursor: 'pointer'
+  }
 }));
 
 export function Layout(props) {
-  const { lumpState, title, children, getUserDetails } = props;
+  
+  const { lumpState, title, children, getUserAndUsers } = props;
   useEffect(() => {
-    getUserDetails();
-  },[getUserDetails])
+    getUserAndUsers();
+  },[getUserAndUsers])
   
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
