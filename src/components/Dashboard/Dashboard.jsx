@@ -5,7 +5,7 @@ import { useStyles } from '../Layout';
 import { Grid, Paper, } from '@material-ui/core';
 
 export const Dashboard = props => {
-
+  
   
   const { debts, bills, userId, users } = props;
   
@@ -33,14 +33,14 @@ export const Dashboard = props => {
   
   const owing = (debts.reduce((accum, bill) => accum + Number(bill.amount) - Number(bill.amountPaid), 0)).toFixed(2)
 
-  let owed = [];
-  let amountOwed
+  let amountOwed = [];
+  let owed
   bills.forEach(bill => {
     const cred = bill.splits.filter(split => split.userId !== userId);
-    owed.push(cred.reduce((accum, cred) => accum + Number(cred.amount), 0));
-    amountOwed = owed.reduce((accum, owe) => accum + owe, 0);
+    amountOwed.push(cred.reduce((accum, cred) => accum + Number(cred.amount), 0));
+    owed = amountOwed.reduce((accum, owe) => accum + owe, 0);
   })
-  const total = (amountOwed - owing).toFixed(2)
+  const total = (owed - owing).toFixed(2)
   
   const classes = useStyles();
   const styles = { height: '100px', backgroundColor: '#FFB884', cursor: 'pointer' };
@@ -63,7 +63,7 @@ export const Dashboard = props => {
       <Grid item xs={12} md={4} lg={4}>
         <Paper className={fixedHeightPaper} style={styles} >
           Owed
-          <div>{amountOwed}</div>
+          <div>{owed}</div>
         </Paper>
       </Grid>
       <Grid item xs={12}>
