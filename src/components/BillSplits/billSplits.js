@@ -14,6 +14,11 @@ const Card = styled.div`
     background-color: blue;
     box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);`
 
+const Canvas = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    background-color: whitesmoke;`
+
 const Button = styled.button`
     color: white;
     background-color: #75C22F;
@@ -25,7 +30,8 @@ const Button = styled.button`
     border-radius: 0.3em;
     padding: 0.5em;
     text-decoration: none;
-    border: 0;`
+    border: 0;
+    cursor: pointer;`
 
 
 
@@ -47,7 +53,8 @@ export function BillSplits(props) {
                     button: 'OK',                 
                     });
                 }
-                props.history.push('/dashboard')
+                // props.history.push(`/my_billsplits/${props.match.params.billId}`)
+                getBills();
             })
             .catch(err => {
                 console.log(err.message)
@@ -65,12 +72,12 @@ export function BillSplits(props) {
     const currentbill = billSplits.find(({id}) => id === currentId);
     const currentBillSplits = currentbill.splits;
     return (
-        <div>
+        <Canvas>
             {
             currentBillSplits.map(billSplit => 
             <Split key={billSplit.id} split={billSplit} approve={approve}/>)
             }
-        </div>
+        </Canvas>
     );
 }
 
@@ -82,7 +89,16 @@ function Split(props){
         <Card>
             <div style={{ color: 'red' }}>Status: {split.status}</div>
             <div>Amount: {split.amount}</div>
-            <Button onClick={() => approve(split.id)}>Confirm</Button>
+            { split.status === 'pending' ?
+            (<Button onClick={() => approve(split.id)}>Confirm</Button>) :
+            (<div style={{ color: 'white', 
+                            backgroundColor: 'orange',
+                            // width: '90%',
+                            margin: '1.5em',
+                            fontSize: '1em',
+                            padding: '0.5em',
+                            borderRadius: '0.3em'}}> CONFIRMED</div>)
+            }
         </Card>
     )
 }
